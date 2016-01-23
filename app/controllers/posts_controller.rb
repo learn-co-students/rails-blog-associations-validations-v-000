@@ -21,7 +21,6 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     find_post
-    @post.update(post_params)
   end
 
   # POST /posts
