@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsBlog</title>
+  <link rel="stylesheet" media="all" href="/assets/application.css" />
+  <script src="/assets/application.js"></script>
+  
+</head>
+<body>
+
+<h1>New post</h1>
+
+<form class="new_post" id="new_post" action="/posts" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+
+  <div class="field">
+    <label for="post_name">Name</label><br>
+    <input type="text" name="post[name]" id="post_name" /><br>
+  </div>
+  <div class="field">
+    <label for="post_content">Content</label><br>
+    <textarea name="post[content]" id="post_content">
+</textarea><br>
+  </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="Create Post" />
+  </div>
+</form>
+
+<a href="/posts">Back</a>
+
+
+</body>
+</html>
