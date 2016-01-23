@@ -33,7 +33,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 group :test, :development do
-  gem "rspec-rails"
+  gem "rspec-rails", '3.4.0'
   gem "capybara"
   gem "selenium-webdriver"
   gem "better_errors"
