@@ -2778,3 +2778,1097 @@ Started GET "/posts/new" for 127.0.0.1 at 2016-01-23 00:56:01 -0500
   [1m[36m (1.2ms)[0m  [1mDELETE FROM "post_tags";[0m
   [1m[35m (0.3ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
   [1m[36m (1.6ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'post_tags';[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.294617"], ["updated_at", "2016-01-23 06:02:25.294617"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.299854"], ["updated_at", "2016-01-23 06:02:25.299854"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.324403"], ["updated_at", "2016-01-23 06:02:25.324403"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.329080"], ["updated_at", "2016-01-23 06:02:25.329080"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.338254"], ["updated_at", "2016-01-23 06:02:25.338254"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.341815"], ["updated_at", "2016-01-23 06:02:25.341815"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.350116"], ["updated_at", "2016-01-23 06:02:25.350116"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.353239"], ["updated_at", "2016-01-23 06:02:25.353239"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.355768"], ["updated_at", "2016-01-23 06:02:25.355768"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Scabbers' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Scabbers"], ["created_at", "2016-01-23 06:02:25.359067"], ["updated_at", "2016-01-23 06:02:25.359067"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."name" = 'Scabbers' AND "users"."id" != 3) LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  DELETE FROM "posts";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'posts';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM "tags";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'tags';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "post_tags";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'post_tags';[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.373387"], ["updated_at", "2016-01-23 06:02:25.373387"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.376839"], ["updated_at", "2016-01-23 06:02:25.376839"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.379619"], ["updated_at", "2016-01-23 06:02:25.379619"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.382751"], ["updated_at", "2016-01-23 06:02:25.382751"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.386741"], ["updated_at", "2016-01-23 06:02:25.386741"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.389988"], ["updated_at", "2016-01-23 06:02:25.389988"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.392640"], ["updated_at", "2016-01-23 06:02:25.392640"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.395079"], ["updated_at", "2016-01-23 06:02:25.395079"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.398062"], ["updated_at", "2016-01-23 06:02:25.398062"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1
+  [1m[36m (1.0ms)[0m  [1mDELETE FROM "posts";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.7ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'posts';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM "users";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (1.1ms)[0m  [1mDELETE FROM "tags";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tags';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM "post_tags";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM sqlite_sequence where name = 'post_tags';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.420725"], ["updated_at", "2016-01-23 06:02:25.420725"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.424231"], ["updated_at", "2016-01-23 06:02:25.424231"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.427544"], ["updated_at", "2016-01-23 06:02:25.427544"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.430418"], ["updated_at", "2016-01-23 06:02:25.430418"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.434906"], ["updated_at", "2016-01-23 06:02:25.434906"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.438280"], ["updated_at", "2016-01-23 06:02:25.438280"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.440788"], ["updated_at", "2016-01-23 06:02:25.440788"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.443602"], ["updated_at", "2016-01-23 06:02:25.443602"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.446087"], ["updated_at", "2016-01-23 06:02:25.446087"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Scabbers' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Scabbers"], ["created_at", "2016-01-23 06:02:25.449327"], ["updated_at", "2016-01-23 06:02:25.449327"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Scabbers' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Scabbers' LIMIT 1[0m
+  [1m[35m (1.0ms)[0m  DELETE FROM "posts";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM sqlite_sequence where name = 'posts';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.7ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM "tags";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (1.2ms)[0m  DELETE FROM sqlite_sequence where name = 'tags';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM "post_tags";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'post_tags';[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.468133"], ["updated_at", "2016-01-23 06:02:25.468133"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.471553"], ["updated_at", "2016-01-23 06:02:25.471553"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.474286"], ["updated_at", "2016-01-23 06:02:25.474286"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.477142"], ["updated_at", "2016-01-23 06:02:25.477142"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.480857"], ["updated_at", "2016-01-23 06:02:25.480857"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.483995"], ["updated_at", "2016-01-23 06:02:25.483995"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.486481"], ["updated_at", "2016-01-23 06:02:25.486481"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.489078"], ["updated_at", "2016-01-23 06:02:25.489078"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.491861"], ["updated_at", "2016-01-23 06:02:25.491861"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (1.1ms)[0m  DELETE FROM "posts";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'posts';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.8ms)[0m  DELETE FROM "tags";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'tags';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "post_tags";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'post_tags';[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.518940"], ["updated_at", "2016-01-23 06:02:25.518940"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.522338"], ["updated_at", "2016-01-23 06:02:25.522338"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.525081"], ["updated_at", "2016-01-23 06:02:25.525081"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.527860"], ["updated_at", "2016-01-23 06:02:25.527860"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.531414"], ["updated_at", "2016-01-23 06:02:25.531414"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.534442"], ["updated_at", "2016-01-23 06:02:25.534442"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.537073"], ["updated_at", "2016-01-23 06:02:25.537073"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.539393"], ["updated_at", "2016-01-23 06:02:25.539393"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.541985"], ["updated_at", "2016-01-23 06:02:25.541985"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "hi"], ["content", "hello"], ["created_at", "2016-01-23 06:02:25.544620"], ["updated_at", "2016-01-23 06:02:25.544620"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM "posts";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.8ms)[0m  DELETE FROM sqlite_sequence where name = 'posts';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (1.1ms)[0m  DELETE FROM "tags";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.8ms)[0m  DELETE FROM sqlite_sequence where name = 'tags';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "post_tags";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'post_tags';[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.558869"], ["updated_at", "2016-01-23 06:02:25.558869"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.562297"], ["updated_at", "2016-01-23 06:02:25.562297"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.566457"], ["updated_at", "2016-01-23 06:02:25.566457"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.569848"], ["updated_at", "2016-01-23 06:02:25.569848"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.573485"], ["updated_at", "2016-01-23 06:02:25.573485"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.576658"], ["updated_at", "2016-01-23 06:02:25.576658"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.579245"], ["updated_at", "2016-01-23 06:02:25.579245"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.581950"], ["updated_at", "2016-01-23 06:02:25.581950"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.584380"], ["updated_at", "2016-01-23 06:02:25.584380"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (1.1ms)[0m  [1mDELETE FROM "posts";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'posts';[0m
+  [1m[35m (1.1ms)[0m  DELETE FROM "users";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.8ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "tags";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (1.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tags';[0m
+  [1m[35m (1.1ms)[0m  DELETE FROM "post_tags";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'post_tags';
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.602198"], ["updated_at", "2016-01-23 06:02:25.602198"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.605495"], ["updated_at", "2016-01-23 06:02:25.605495"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.608387"], ["updated_at", "2016-01-23 06:02:25.608387"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.611371"], ["updated_at", "2016-01-23 06:02:25.611371"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.614710"], ["updated_at", "2016-01-23 06:02:25.614710"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.2ms)[0m  SELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.619531"], ["updated_at", "2016-01-23 06:02:25.619531"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.622708"], ["updated_at", "2016-01-23 06:02:25.622708"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.625418"], ["updated_at", "2016-01-23 06:02:25.625418"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.628064"], ["updated_at", "2016-01-23 06:02:25.628064"]]
+  [1m[36m (18.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (1.1ms)[0m  DELETE FROM "posts";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'posts';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM "tags";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.8ms)[0m  DELETE FROM sqlite_sequence where name = 'tags';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "post_tags";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'post_tags';[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.662959"], ["updated_at", "2016-01-23 06:02:25.662959"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.666658"], ["updated_at", "2016-01-23 06:02:25.666658"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.669478"], ["updated_at", "2016-01-23 06:02:25.669478"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.672427"], ["updated_at", "2016-01-23 06:02:25.672427"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.675816"], ["updated_at", "2016-01-23 06:02:25.675816"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.678749"], ["updated_at", "2016-01-23 06:02:25.678749"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.681748"], ["updated_at", "2016-01-23 06:02:25.681748"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.684322"], ["updated_at", "2016-01-23 06:02:25.684322"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.686899"], ["updated_at", "2016-01-23 06:02:25.686899"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (1.4ms)[0m  DELETE FROM "posts";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (1.1ms)[0m  DELETE FROM sqlite_sequence where name = 'posts';
+  [1m[36m (0.7ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.7ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM "tags";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (1.1ms)[0m  DELETE FROM sqlite_sequence where name = 'tags';
+  [1m[36m (1.0ms)[0m  [1mDELETE FROM "post_tags";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'post_tags';[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.707653"], ["updated_at", "2016-01-23 06:02:25.707653"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.711034"], ["updated_at", "2016-01-23 06:02:25.711034"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.714150"], ["updated_at", "2016-01-23 06:02:25.714150"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.718486"], ["updated_at", "2016-01-23 06:02:25.718486"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.722063"], ["updated_at", "2016-01-23 06:02:25.722063"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.725248"], ["updated_at", "2016-01-23 06:02:25.725248"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.727753"], ["updated_at", "2016-01-23 06:02:25.727753"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.730295"], ["updated_at", "2016-01-23 06:02:25.730295"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.733695"], ["updated_at", "2016-01-23 06:02:25.733695"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tags" INNER JOIN "post_tags" ON "tags"."id" = "post_tags"."tag_id" WHERE "post_tags"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[35m (1.4ms)[0m  DELETE FROM "posts";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'posts';
+  [1m[36m (1.2ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.4ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (1.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.8ms)[0m  DELETE FROM "tags";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'tags';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM "post_tags";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'post_tags';[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.757649"], ["updated_at", "2016-01-23 06:02:25.757649"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.761066"], ["updated_at", "2016-01-23 06:02:25.761066"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.763868"], ["updated_at", "2016-01-23 06:02:25.763868"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.766535"], ["updated_at", "2016-01-23 06:02:25.766535"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.770157"], ["updated_at", "2016-01-23 06:02:25.770157"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.773265"], ["updated_at", "2016-01-23 06:02:25.773265"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.775845"], ["updated_at", "2016-01-23 06:02:25.775845"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.778277"], ["updated_at", "2016-01-23 06:02:25.778277"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.781561"], ["updated_at", "2016-01-23 06:02:25.781561"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'happy' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "happy"], ["created_at", "2016-01-23 06:02:25.785012"], ["updated_at", "2016-01-23 06:02:25.785012"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE ("tags"."name" = 'happy' AND "tags"."id" != 3) LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM "posts";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'posts';
+  [1m[36m (1.1ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM "tags";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM sqlite_sequence where name = 'tags';
+  [1m[36m (0.7ms)[0m  [1mDELETE FROM "post_tags";[0m
+  [1m[35m (0.6ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (1.0ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'post_tags';[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.800678"], ["updated_at", "2016-01-23 06:02:25.800678"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.804214"], ["updated_at", "2016-01-23 06:02:25.804214"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.806778"], ["updated_at", "2016-01-23 06:02:25.806778"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.809688"], ["updated_at", "2016-01-23 06:02:25.809688"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.813303"], ["updated_at", "2016-01-23 06:02:25.813303"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.817449"], ["updated_at", "2016-01-23 06:02:25.817449"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.820216"], ["updated_at", "2016-01-23 06:02:25.820216"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.822779"], ["updated_at", "2016-01-23 06:02:25.822779"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.825639"], ["updated_at", "2016-01-23 06:02:25.825639"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'happy' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "happy"], ["created_at", "2016-01-23 06:02:25.828938"], ["updated_at", "2016-01-23 06:02:25.828938"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'happy' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35mTag Exists (0.2ms)[0m  SELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'happy' LIMIT 1
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM "posts";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (1.6ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'posts';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM "users";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "tags";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tags';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM "post_tags";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.8ms)[0m  DELETE FROM sqlite_sequence where name = 'post_tags';
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.849870"], ["updated_at", "2016-01-23 06:02:25.849870"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.853183"], ["updated_at", "2016-01-23 06:02:25.853183"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.856015"], ["updated_at", "2016-01-23 06:02:25.856015"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.858717"], ["updated_at", "2016-01-23 06:02:25.858717"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.2ms)[0m  SELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.862279"], ["updated_at", "2016-01-23 06:02:25.862279"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.865457"], ["updated_at", "2016-01-23 06:02:25.865457"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.868077"], ["updated_at", "2016-01-23 06:02:25.868077"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.870515"], ["updated_at", "2016-01-23 06:02:25.870515"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.873155"], ["updated_at", "2016-01-23 06:02:25.873155"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" INNER JOIN "post_tags" ON "posts"."id" = "post_tags"."post_id" WHERE "post_tags"."tag_id" = ?  [["tag_id", 1]]
+  [1m[36m (2.0ms)[0m  [1mDELETE FROM "posts";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (1.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'posts';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM "users";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36m (1.1ms)[0m  [1mDELETE FROM "tags";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'tags';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM "post_tags";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.8ms)[0m  DELETE FROM sqlite_sequence where name = 'post_tags';
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:25.892145"], ["updated_at", "2016-01-23 06:02:25.892145"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:25.895391"], ["updated_at", "2016-01-23 06:02:25.895391"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.899418"], ["updated_at", "2016-01-23 06:02:25.899418"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:25.902831"], ["updated_at", "2016-01-23 06:02:25.902831"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "cute"], ["created_at", "2016-01-23 06:02:25.906422"], ["updated_at", "2016-01-23 06:02:25.906422"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "adorable"], ["created_at", "2016-01-23 06:02:25.909689"], ["updated_at", "2016-01-23 06:02:25.909689"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.912334"], ["updated_at", "2016-01-23 06:02:25.912334"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:25.915467"], ["updated_at", "2016-01-23 06:02:25.915467"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:25.918112"], ["updated_at", "2016-01-23 06:02:25.918112"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Started GET "/posts/new" for 127.0.0.1 at 2016-01-23 01:02:25 -0500
+Processing by PostsController#new as HTML
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags"
+  Rendered posts/_form.html.erb (25.2ms)
+  Rendered posts/new.html.erb within layouts/application (30.5ms)
+Completed 200 OK in 361ms (Views: 360.3ms | ActiveRecord: 0.2ms)
+Started POST "/posts" for 127.0.0.1 at 2016-01-23 01:02:26 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"name"=>"Post title", "content"=>"post content", "tag_ids"=>[""]}, "commit"=>"Create Post"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:26.328908"], ["updated_at", "2016-01-23 06:02:26.328908"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://www.example.com/posts/3
+Completed 302 Found in 15ms (ActiveRecord: 1.5ms)
+Started GET "/posts/3" for 127.0.0.1 at 2016-01-23 01:02:26 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError - undefined method `set_post' for #<PostsController:0x007fc0d2838fe8>:
+  activesupport (4.2.0) lib/active_support/callbacks.rb:427:in `block in make_lambda'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/urlmap.rb:66:in `block in call'
+  rack (1.6.0) lib/rack/urlmap.rb:50:in `call'
+  rack-test (0.6.3) lib/rack/mock_session.rb:30:in `request'
+  rack-test (0.6.3) lib/rack/test.rb:244:in `process_request'
+  rack-test (0.6.3) lib/rack/test.rb:58:in `get'
+  /Users/Nacho/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/forwardable.rb:183:in `get'
+  capybara (2.4.4) lib/capybara/rack_test/browser.rb:60:in `process'
+  capybara (2.4.4) lib/capybara/rack_test/browser.rb:38:in `block in process_and_follow_redirects'
+  capybara (2.4.4) lib/capybara/rack_test/browser.rb:37:in `process_and_follow_redirects'
+  capybara (2.4.4) lib/capybara/rack_test/browser.rb:26:in `submit'
+  capybara (2.4.4) lib/capybara/rack_test/form.rb:75:in `submit'
+  capybara (2.4.4) lib/capybara/rack_test/node.rb:60:in `click'
+  capybara (2.4.4) lib/capybara/node/element.rb:133:in `block in click'
+  capybara (2.4.4) lib/capybara/node/base.rb:84:in `synchronize'
+  capybara (2.4.4) lib/capybara/node/element.rb:133:in `click'
+  capybara (2.4.4) lib/capybara/node/actions.rb:37:in `click_button'
+  capybara (2.4.4) lib/capybara/session.rb:676:in `block (2 levels) in <class:Session>'
+  capybara (2.4.4) lib/capybara/dsl.rb:51:in `block (2 levels) in <module:DSL>'
+  spec/02_features/tags_for_post_spec.rb:6:in `block (2 levels) in <top (required)>'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:177:in `block in run'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:385:in `block in with_around_and_singleton_context_hooks'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:343:in `block in with_around_example_hooks'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:474:in `block in run'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:614:in `block in run_around_example_hooks_for'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:247:in `call'
+  rspec-rails (3.2.1) lib/rspec/rails/adapters.rb:113:in `block (2 levels) in <module:MinitestLifecycleAdapter>'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:333:in `instance_exec'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:387:in `execute_with'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:616:in `block (2 levels) in run_around_example_hooks_for'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:247:in `call'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:617:in `run_around_example_hooks_for'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:474:in `run'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:343:in `with_around_example_hooks'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:385:in `with_around_and_singleton_context_hooks'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:174:in `run'
+  rspec-core (3.2.1) lib/rspec/core/example_group.rb:548:in `block in run_examples'
+  rspec-core (3.2.1) lib/rspec/core/example_group.rb:544:in `run_examples'
+  rspec-core (3.2.1) lib/rspec/core/example_group.rb:512:in `run'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:110:in `block (3 levels) in run_specs'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:110:in `block (2 levels) in run_specs'
+  rspec-core (3.2.1) lib/rspec/core/configuration.rb:1526:in `with_suite_hooks'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:109:in `block in run_specs'
+  rspec-core (3.2.1) lib/rspec/core/reporter.rb:62:in `report'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:108:in `run_specs'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:86:in `run'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:70:in `run'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:38:in `invoke'
+  rspec-core (3.2.1) exe/rspec:4:in `<top (required)>'
+   () Users/Nacho/.rvm/gems/ruby-2.2.1/bin/rspec:23:in `<main>'
+   () Users/Nacho/.rvm/gems/ruby-2.2.1/bin/ruby_executable_hooks:15:in `<main>'
+
+  [1m[35m (1.2ms)[0m  DELETE FROM "posts";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'posts';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM "tags";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'tags';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM "post_tags";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (1.4ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'post_tags';[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:26.381630"], ["updated_at", "2016-01-23 06:02:26.381630"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:26.385172"], ["updated_at", "2016-01-23 06:02:26.385172"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:26.388732"], ["updated_at", "2016-01-23 06:02:26.388732"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:26.392457"], ["updated_at", "2016-01-23 06:02:26.392457"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cute"], ["created_at", "2016-01-23 06:02:26.398215"], ["updated_at", "2016-01-23 06:02:26.398215"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adorable"], ["created_at", "2016-01-23 06:02:26.402136"], ["updated_at", "2016-01-23 06:02:26.402136"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:26.405824"], ["updated_at", "2016-01-23 06:02:26.405824"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:26.409645"], ["updated_at", "2016-01-23 06:02:26.409645"]]
+  [1m[36m (2.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:26.413967"], ["updated_at", "2016-01-23 06:02:26.413967"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Started GET "/posts/new" for 127.0.0.1 at 2016-01-23 01:02:26 -0500
+Processing by PostsController#new as HTML
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  Rendered posts/_form.html.erb (4.1ms)
+  Rendered posts/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.2ms)
+Started POST "/posts" for 127.0.0.1 at 2016-01-23 01:02:26 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"name"=>"Post title", "content"=>"post content", "tag_ids"=>["1", ""]}, "commit"=>"Create Post"}
+  [1m[35mTag Load (0.2ms)[0m  SELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE ("tags"."name" = 'cute' AND "tags"."id" != 1) LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "posts" ("name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:26.446042"], ["updated_at", "2016-01-23 06:02:26.446042"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 3], ["created_at", "2016-01-23 06:02:26.449138"], ["updated_at", "2016-01-23 06:02:26.449138"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://www.example.com/posts/3
+Completed 302 Found in 20ms (ActiveRecord: 2.2ms)
+Started GET "/posts/3" for 127.0.0.1 at 2016-01-23 01:02:26 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError - undefined method `set_post' for #<PostsController:0x007fc0d0f32828>:
+  activesupport (4.2.0) lib/active_support/callbacks.rb:427:in `block in make_lambda'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/urlmap.rb:66:in `block in call'
+  rack (1.6.0) lib/rack/urlmap.rb:50:in `call'
+  rack-test (0.6.3) lib/rack/mock_session.rb:30:in `request'
+  rack-test (0.6.3) lib/rack/test.rb:244:in `process_request'
+  rack-test (0.6.3) lib/rack/test.rb:58:in `get'
+  /Users/Nacho/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/forwardable.rb:183:in `get'
+  capybara (2.4.4) lib/capybara/rack_test/browser.rb:60:in `process'
+  capybara (2.4.4) lib/capybara/rack_test/browser.rb:38:in `block in process_and_follow_redirects'
+  capybara (2.4.4) lib/capybara/rack_test/browser.rb:37:in `process_and_follow_redirects'
+  capybara (2.4.4) lib/capybara/rack_test/browser.rb:26:in `submit'
+  capybara (2.4.4) lib/capybara/rack_test/form.rb:75:in `submit'
+  capybara (2.4.4) lib/capybara/rack_test/node.rb:60:in `click'
+  capybara (2.4.4) lib/capybara/node/element.rb:133:in `block in click'
+  capybara (2.4.4) lib/capybara/node/base.rb:84:in `synchronize'
+  capybara (2.4.4) lib/capybara/node/element.rb:133:in `click'
+  capybara (2.4.4) lib/capybara/node/actions.rb:37:in `click_button'
+  capybara (2.4.4) lib/capybara/session.rb:676:in `block (2 levels) in <class:Session>'
+  capybara (2.4.4) lib/capybara/dsl.rb:51:in `block (2 levels) in <module:DSL>'
+  spec/02_features/tags_for_post_spec.rb:15:in `block (2 levels) in <top (required)>'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:177:in `block in run'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:385:in `block in with_around_and_singleton_context_hooks'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:343:in `block in with_around_example_hooks'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:474:in `block in run'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:614:in `block in run_around_example_hooks_for'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:247:in `call'
+  rspec-rails (3.2.1) lib/rspec/rails/adapters.rb:113:in `block (2 levels) in <module:MinitestLifecycleAdapter>'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:333:in `instance_exec'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:387:in `execute_with'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:616:in `block (2 levels) in run_around_example_hooks_for'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:247:in `call'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:617:in `run_around_example_hooks_for'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:474:in `run'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:343:in `with_around_example_hooks'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:385:in `with_around_and_singleton_context_hooks'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:174:in `run'
+  rspec-core (3.2.1) lib/rspec/core/example_group.rb:548:in `block in run_examples'
+  rspec-core (3.2.1) lib/rspec/core/example_group.rb:544:in `run_examples'
+  rspec-core (3.2.1) lib/rspec/core/example_group.rb:512:in `run'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:110:in `block (3 levels) in run_specs'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:110:in `block (2 levels) in run_specs'
+  rspec-core (3.2.1) lib/rspec/core/configuration.rb:1526:in `with_suite_hooks'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:109:in `block in run_specs'
+  rspec-core (3.2.1) lib/rspec/core/reporter.rb:62:in `report'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:108:in `run_specs'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:86:in `run'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:70:in `run'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:38:in `invoke'
+  rspec-core (3.2.1) exe/rspec:4:in `<top (required)>'
+   () Users/Nacho/.rvm/gems/ruby-2.2.1/bin/rspec:23:in `<main>'
+   () Users/Nacho/.rvm/gems/ruby-2.2.1/bin/ruby_executable_hooks:15:in `<main>'
+
+  [1m[35m (1.1ms)[0m  DELETE FROM "posts";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'posts';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM "tags";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'tags';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM "post_tags";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'post_tags';[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Crookshanks"], ["created_at", "2016-01-23 06:02:26.484684"], ["updated_at", "2016-01-23 06:02:26.484684"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Kitten' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Kitten"], ["created_at", "2016-01-23 06:02:26.487942"], ["updated_at", "2016-01-23 06:02:26.487942"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:26.490663"], ["updated_at", "2016-01-23 06:02:26.490663"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["user_id", 1], ["name", "my second post"], ["content", "post content"], ["created_at", "2016-01-23 06:02:26.493510"], ["updated_at", "2016-01-23 06:02:26.493510"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cute"], ["created_at", "2016-01-23 06:02:26.497261"], ["updated_at", "2016-01-23 06:02:26.497261"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adorable"], ["created_at", "2016-01-23 06:02:26.501218"], ["updated_at", "2016-01-23 06:02:26.501218"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 1], ["created_at", "2016-01-23 06:02:26.504156"], ["updated_at", "2016-01-23 06:02:26.504156"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 1], ["post_id", 2], ["created_at", "2016-01-23 06:02:26.507373"], ["updated_at", "2016-01-23 06:02:26.507373"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 2], ["post_id", 1], ["created_at", "2016-01-23 06:02:26.510230"], ["updated_at", "2016-01-23 06:02:26.510230"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Started GET "/posts/new" for 127.0.0.1 at 2016-01-23 01:02:26 -0500
+Processing by PostsController#new as HTML
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  Rendered posts/_form.html.erb (5.0ms)
+  Rendered posts/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.2ms)
+Started POST "/posts" for 127.0.0.1 at 2016-01-23 01:02:26 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"name"=>"Post title", "content"=>"post content", "tag_ids"=>["1", "2", ""]}, "commit"=>"Create Post"}
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1, 2)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE ("tags"."name" = 'cute' AND "tags"."id" != 1) LIMIT 1
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE ("tags"."name" = 'adorable' AND "tags"."id" != 2) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Post title"], ["content", "post content"], ["created_at", "2016-01-23 06:02:26.537119"], ["updated_at", "2016-01-23 06:02:26.537119"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 1], ["post_id", 3], ["created_at", "2016-01-23 06:02:26.538903"], ["updated_at", "2016-01-23 06:02:26.538903"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 2], ["post_id", 3], ["created_at", "2016-01-23 06:02:26.540532"], ["updated_at", "2016-01-23 06:02:26.540532"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://www.example.com/posts/3
+Completed 302 Found in 13ms (ActiveRecord: 2.0ms)
+Started GET "/posts/3" for 127.0.0.1 at 2016-01-23 01:02:26 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError - undefined method `set_post' for #<PostsController:0x007fc0d0b56ee8>:
+  activesupport (4.2.0) lib/active_support/callbacks.rb:427:in `block in make_lambda'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:145:in `block in halting_and_conditional'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/urlmap.rb:66:in `block in call'
+  rack (1.6.0) lib/rack/urlmap.rb:50:in `call'
+  rack-test (0.6.3) lib/rack/mock_session.rb:30:in `request'
+  rack-test (0.6.3) lib/rack/test.rb:244:in `process_request'
+  rack-test (0.6.3) lib/rack/test.rb:58:in `get'
+  /Users/Nacho/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/forwardable.rb:183:in `get'
+  capybara (2.4.4) lib/capybara/rack_test/browser.rb:60:in `process'
+  capybara (2.4.4) lib/capybara/rack_test/browser.rb:38:in `block in process_and_follow_redirects'
+  capybara (2.4.4) lib/capybara/rack_test/browser.rb:37:in `process_and_follow_redirects'
+  capybara (2.4.4) lib/capybara/rack_test/browser.rb:26:in `submit'
+  capybara (2.4.4) lib/capybara/rack_test/form.rb:75:in `submit'
+  capybara (2.4.4) lib/capybara/rack_test/node.rb:60:in `click'
+  capybara (2.4.4) lib/capybara/node/element.rb:133:in `block in click'
+  capybara (2.4.4) lib/capybara/node/base.rb:84:in `synchronize'
+  capybara (2.4.4) lib/capybara/node/element.rb:133:in `click'
+  capybara (2.4.4) lib/capybara/node/actions.rb:37:in `click_button'
+  capybara (2.4.4) lib/capybara/session.rb:676:in `block (2 levels) in <class:Session>'
+  capybara (2.4.4) lib/capybara/dsl.rb:51:in `block (2 levels) in <module:DSL>'
+  spec/02_features/tags_for_post_spec.rb:26:in `block (2 levels) in <top (required)>'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:177:in `block in run'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:385:in `block in with_around_and_singleton_context_hooks'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:343:in `block in with_around_example_hooks'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:474:in `block in run'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:614:in `block in run_around_example_hooks_for'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:247:in `call'
+  rspec-rails (3.2.1) lib/rspec/rails/adapters.rb:113:in `block (2 levels) in <module:MinitestLifecycleAdapter>'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:333:in `instance_exec'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:387:in `execute_with'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:616:in `block (2 levels) in run_around_example_hooks_for'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:247:in `call'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:617:in `run_around_example_hooks_for'
+  rspec-core (3.2.1) lib/rspec/core/hooks.rb:474:in `run'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:343:in `with_around_example_hooks'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:385:in `with_around_and_singleton_context_hooks'
+  rspec-core (3.2.1) lib/rspec/core/example.rb:174:in `run'
+  rspec-core (3.2.1) lib/rspec/core/example_group.rb:548:in `block in run_examples'
+  rspec-core (3.2.1) lib/rspec/core/example_group.rb:544:in `run_examples'
+  rspec-core (3.2.1) lib/rspec/core/example_group.rb:512:in `run'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:110:in `block (3 levels) in run_specs'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:110:in `block (2 levels) in run_specs'
+  rspec-core (3.2.1) lib/rspec/core/configuration.rb:1526:in `with_suite_hooks'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:109:in `block in run_specs'
+  rspec-core (3.2.1) lib/rspec/core/reporter.rb:62:in `report'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:108:in `run_specs'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:86:in `run'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:70:in `run'
+  rspec-core (3.2.1) lib/rspec/core/runner.rb:38:in `invoke'
+  rspec-core (3.2.1) exe/rspec:4:in `<top (required)>'
+   () Users/Nacho/.rvm/gems/ruby-2.2.1/bin/rspec:23:in `<main>'
+   () Users/Nacho/.rvm/gems/ruby-2.2.1/bin/ruby_executable_hooks:15:in `<main>'
+
+  [1m[35m (1.2ms)[0m  DELETE FROM "posts";
+  [1m[36m (0.3ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'posts';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.8ms)[0m  DELETE FROM "tags";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.9ms)[0m  DELETE FROM sqlite_sequence where name = 'tags';
+  [1m[36m (1.2ms)[0m  [1mDELETE FROM "post_tags";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'post_tags';[0m
