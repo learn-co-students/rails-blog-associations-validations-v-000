@@ -1,5 +1,15 @@
 <h1>New post</h1>
 
-<%= render 'form' %>
+<%= form_for @post do |f| %>
+	<div class="field">
+		<%=f.label :name%>
+		<%=f.text_field :name%><br>
+	</div>
+	<div class="field">
+		<%=f.label :content%>
+		<%=f.text_field :content%><br>
+		<%=f.check_box :tags, Tag.all%>
+	</div>
+<%end%>
 
 <%= link_to 'Back', posts_path %>
