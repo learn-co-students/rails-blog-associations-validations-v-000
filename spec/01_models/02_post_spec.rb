@@ -1,3 +1,4 @@
+require 'spec_helper'
 describe Post do
   context 'Post validations' do
     it "post is valid" do
