@@ -1,3 +1,4 @@
+require 'spec_helper'
 describe User do
   context 'User validations' do
     it "user is valid" do
