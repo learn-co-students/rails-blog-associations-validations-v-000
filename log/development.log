@@ -1,0 +1,1136 @@
+  [1m[36m (9.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreatePosts (20140310213347)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140310213347"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20160215230507)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160215230507"]]
+  [1m[36m (8.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTags (20160215230530)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160215230530"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePostTags (20160215230941)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "post_tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "post_id" integer, "tag_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_post_tags_on_post_id" ON "post_tags" ("post_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_post_tags_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_post_tags_on_post_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_post_tags_on_tag_id" ON "post_tags" ("tag_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160215230941"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_post_tags_on_tag_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_post_tags_on_tag_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_post_tags_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_post_tags_on_post_id' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToPosts (20160215231340)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "posts" ADD "user_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160215231340"]]
+  [1m[36m (8.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_post_tags_on_tag_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_post_tags_on_tag_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_post_tags_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_post_tags_on_post_id' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddContentToPosts (20160215231830)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "posts" ADD "content" text[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160215231830"]]
+  [1m[36m (8.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_post_tags_on_tag_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_post_tags_on_tag_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_post_tags_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_post_tags_on_post_id' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adventurous' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adventurous"], ["created_at", "2016-02-15 23:37:35.891364"], ["updated_at", "2016-02-15 23:37:35.891364"]]
+  [1m[36m (8.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'aggressive' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "aggressive"], ["created_at", "2016-02-15 23:37:35.902922"], ["updated_at", "2016-02-15 23:37:35.902922"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'agreeable' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "agreeable"], ["created_at", "2016-02-15 23:37:35.905626"], ["updated_at", "2016-02-15 23:37:35.905626"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'alert' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "alert"], ["created_at", "2016-02-15 23:37:35.908073"], ["updated_at", "2016-02-15 23:37:35.908073"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'alive' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "alive"], ["created_at", "2016-02-15 23:37:35.910203"], ["updated_at", "2016-02-15 23:37:35.910203"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'amused' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "amused"], ["created_at", "2016-02-15 23:37:35.912454"], ["updated_at", "2016-02-15 23:37:35.912454"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'angry' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "angry"], ["created_at", "2016-02-15 23:37:35.915028"], ["updated_at", "2016-02-15 23:37:35.915028"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'annoyed' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "annoyed"], ["created_at", "2016-02-15 23:37:35.917402"], ["updated_at", "2016-02-15 23:37:35.917402"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'annoying' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "annoying"], ["created_at", "2016-02-15 23:37:35.919860"], ["updated_at", "2016-02-15 23:37:35.919860"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'anxious' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "anxious"], ["created_at", "2016-02-15 23:37:35.922265"], ["updated_at", "2016-02-15 23:37:35.922265"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'arrogant' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "arrogant"], ["created_at", "2016-02-15 23:37:35.924833"], ["updated_at", "2016-02-15 23:37:35.924833"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mTag Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'ashamed' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "ashamed"], ["created_at", "2016-02-15 23:37:35.933250"], ["updated_at", "2016-02-15 23:37:35.933250"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'attractive' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "attractive"], ["created_at", "2016-02-15 23:37:35.936464"], ["updated_at", "2016-02-15 23:37:35.936464"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'average' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "average"], ["created_at", "2016-02-15 23:37:35.939237"], ["updated_at", "2016-02-15 23:37:35.939237"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'awful' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "awful"], ["created_at", "2016-02-15 23:37:35.942263"], ["updated_at", "2016-02-15 23:37:35.942263"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'bad' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "bad"], ["created_at", "2016-02-15 23:37:35.944955"], ["updated_at", "2016-02-15 23:37:35.944955"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'beautiful' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "beautiful"], ["created_at", "2016-02-15 23:37:35.947746"], ["updated_at", "2016-02-15 23:37:35.947746"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'better' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "better"], ["created_at", "2016-02-15 23:37:35.950425"], ["updated_at", "2016-02-15 23:37:35.950425"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'bewildered' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "bewildered"], ["created_at", "2016-02-15 23:37:35.953225"], ["updated_at", "2016-02-15 23:37:35.953225"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'black' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "black"], ["created_at", "2016-02-15 23:37:35.955817"], ["updated_at", "2016-02-15 23:37:35.955817"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'bloody' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "bloody"], ["created_at", "2016-02-15 23:37:35.958475"], ["updated_at", "2016-02-15 23:37:35.958475"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'blue' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "blue"], ["created_at", "2016-02-15 23:37:35.961525"], ["updated_at", "2016-02-15 23:37:35.961525"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'blue-eyed' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "blue-eyed"], ["created_at", "2016-02-15 23:37:35.963989"], ["updated_at", "2016-02-15 23:37:35.963989"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'blushing' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "blushing"], ["created_at", "2016-02-15 23:37:35.966615"], ["updated_at", "2016-02-15 23:37:35.966615"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'bored' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "bored"], ["created_at", "2016-02-15 23:37:35.969011"], ["updated_at", "2016-02-15 23:37:35.969011"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'brainy' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "brainy"], ["created_at", "2016-02-15 23:37:35.971895"], ["updated_at", "2016-02-15 23:37:35.971895"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'brave' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "brave"], ["created_at", "2016-02-15 23:37:35.974606"], ["updated_at", "2016-02-15 23:37:35.974606"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'breakable' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "breakable"], ["created_at", "2016-02-15 23:37:35.977211"], ["updated_at", "2016-02-15 23:37:35.977211"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'bright' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "bright"], ["created_at", "2016-02-15 23:37:35.979730"], ["updated_at", "2016-02-15 23:37:35.979730"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'busy' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "busy"], ["created_at", "2016-02-15 23:37:35.982439"], ["updated_at", "2016-02-15 23:37:35.982439"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'calm' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "calm"], ["created_at", "2016-02-15 23:37:35.985817"], ["updated_at", "2016-02-15 23:37:35.985817"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'careful' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "careful"], ["created_at", "2016-02-15 23:37:35.988546"], ["updated_at", "2016-02-15 23:37:35.988546"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cautious' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cautious"], ["created_at", "2016-02-15 23:37:35.991154"], ["updated_at", "2016-02-15 23:37:35.991154"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'charming' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "charming"], ["created_at", "2016-02-15 23:37:35.993621"], ["updated_at", "2016-02-15 23:37:35.993621"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cheerful' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cheerful"], ["created_at", "2016-02-15 23:37:35.996615"], ["updated_at", "2016-02-15 23:37:35.996615"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'clean' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "clean"], ["created_at", "2016-02-15 23:37:35.999333"], ["updated_at", "2016-02-15 23:37:35.999333"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'clear' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "clear"], ["created_at", "2016-02-15 23:37:36.002241"], ["updated_at", "2016-02-15 23:37:36.002241"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'clever' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "clever"], ["created_at", "2016-02-15 23:37:36.005025"], ["updated_at", "2016-02-15 23:37:36.005025"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cloudy' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cloudy"], ["created_at", "2016-02-15 23:37:36.007954"], ["updated_at", "2016-02-15 23:37:36.007954"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'clumsy' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "clumsy"], ["created_at", "2016-02-15 23:37:36.010268"], ["updated_at", "2016-02-15 23:37:36.010268"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'colorful' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "colorful"], ["created_at", "2016-02-15 23:37:36.012831"], ["updated_at", "2016-02-15 23:37:36.012831"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'combative' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "combative"], ["created_at", "2016-02-15 23:37:36.015190"], ["updated_at", "2016-02-15 23:37:36.015190"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'comfortable' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "comfortable"], ["created_at", "2016-02-15 23:37:36.017612"], ["updated_at", "2016-02-15 23:37:36.017612"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'concerned' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "concerned"], ["created_at", "2016-02-15 23:37:36.020005"], ["updated_at", "2016-02-15 23:37:36.020005"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'condemned' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "condemned"], ["created_at", "2016-02-15 23:37:36.022370"], ["updated_at", "2016-02-15 23:37:36.022370"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'confused' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "confused"], ["created_at", "2016-02-15 23:37:36.024916"], ["updated_at", "2016-02-15 23:37:36.024916"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cooperative' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cooperative"], ["created_at", "2016-02-15 23:37:36.027736"], ["updated_at", "2016-02-15 23:37:36.027736"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'courageous' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "courageous"], ["created_at", "2016-02-15 23:37:36.030248"], ["updated_at", "2016-02-15 23:37:36.030248"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'crazy' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "crazy"], ["created_at", "2016-02-15 23:37:36.032521"], ["updated_at", "2016-02-15 23:37:36.032521"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'creepy' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "creepy"], ["created_at", "2016-02-15 23:37:36.034972"], ["updated_at", "2016-02-15 23:37:36.034972"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'crowded' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "crowded"], ["created_at", "2016-02-15 23:37:36.037510"], ["updated_at", "2016-02-15 23:37:36.037510"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cruel' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cruel"], ["created_at", "2016-02-15 23:37:36.039958"], ["updated_at", "2016-02-15 23:37:36.039958"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'curious' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "curious"], ["created_at", "2016-02-15 23:37:36.042627"], ["updated_at", "2016-02-15 23:37:36.042627"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'cute' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "cute"], ["created_at", "2016-02-15 23:37:36.044956"], ["updated_at", "2016-02-15 23:37:36.044956"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'dangerous' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "dangerous"], ["created_at", "2016-02-15 23:37:36.047363"], ["updated_at", "2016-02-15 23:37:36.047363"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'dark' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "dark"], ["created_at", "2016-02-15 23:37:36.050034"], ["updated_at", "2016-02-15 23:37:36.050034"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'dead' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "dead"], ["created_at", "2016-02-15 23:37:36.052474"], ["updated_at", "2016-02-15 23:37:36.052474"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'defeated' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "defeated"], ["created_at", "2016-02-15 23:37:36.055016"], ["updated_at", "2016-02-15 23:37:36.055016"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'defiant' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "defiant"], ["created_at", "2016-02-15 23:37:36.057261"], ["updated_at", "2016-02-15 23:37:36.057261"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'delightful' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "delightful"], ["created_at", "2016-02-15 23:37:36.060035"], ["updated_at", "2016-02-15 23:37:36.060035"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'depressed' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "depressed"], ["created_at", "2016-02-15 23:37:36.062585"], ["updated_at", "2016-02-15 23:37:36.062585"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'determined' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "determined"], ["created_at", "2016-02-15 23:37:36.065338"], ["updated_at", "2016-02-15 23:37:36.065338"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'different' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "different"], ["created_at", "2016-02-15 23:37:36.067887"], ["updated_at", "2016-02-15 23:37:36.067887"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'difficult' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "difficult"], ["created_at", "2016-02-15 23:37:36.070406"], ["updated_at", "2016-02-15 23:37:36.070406"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'disgusted' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "disgusted"], ["created_at", "2016-02-15 23:37:36.072962"], ["updated_at", "2016-02-15 23:37:36.072962"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'distinct' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "distinct"], ["created_at", "2016-02-15 23:37:36.075888"], ["updated_at", "2016-02-15 23:37:36.075888"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'disturbed' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "disturbed"], ["created_at", "2016-02-15 23:37:36.078375"], ["updated_at", "2016-02-15 23:37:36.078375"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'dizzy' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "dizzy"], ["created_at", "2016-02-15 23:37:36.080622"], ["updated_at", "2016-02-15 23:37:36.080622"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'doubtful' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "doubtful"], ["created_at", "2016-02-15 23:37:36.083312"], ["updated_at", "2016-02-15 23:37:36.083312"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'drab' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "drab"], ["created_at", "2016-02-15 23:37:36.085647"], ["updated_at", "2016-02-15 23:37:36.085647"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'dull' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "dull"], ["created_at", "2016-02-15 23:37:36.088157"], ["updated_at", "2016-02-15 23:37:36.088157"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'eager' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "eager"], ["created_at", "2016-02-15 23:37:36.090516"], ["updated_at", "2016-02-15 23:37:36.090516"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'easy' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "easy"], ["created_at", "2016-02-15 23:37:36.093311"], ["updated_at", "2016-02-15 23:37:36.093311"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'elated' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "elated"], ["created_at", "2016-02-15 23:37:36.095726"], ["updated_at", "2016-02-15 23:37:36.095726"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'elegant' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "elegant"], ["created_at", "2016-02-15 23:37:36.098193"], ["updated_at", "2016-02-15 23:37:36.098193"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'embarrassed' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "embarrassed"], ["created_at", "2016-02-15 23:37:36.100650"], ["updated_at", "2016-02-15 23:37:36.100650"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'enchanting' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "enchanting"], ["created_at", "2016-02-15 23:37:36.102975"], ["updated_at", "2016-02-15 23:37:36.102975"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'encouraging' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "encouraging"], ["created_at", "2016-02-15 23:37:36.105501"], ["updated_at", "2016-02-15 23:37:36.105501"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'energetic' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "energetic"], ["created_at", "2016-02-15 23:37:36.107709"], ["updated_at", "2016-02-15 23:37:36.107709"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'enthusiastic' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "enthusiastic"], ["created_at", "2016-02-15 23:37:36.110204"], ["updated_at", "2016-02-15 23:37:36.110204"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'envious' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "envious"], ["created_at", "2016-02-15 23:37:36.113185"], ["updated_at", "2016-02-15 23:37:36.113185"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'evil' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "evil"], ["created_at", "2016-02-15 23:37:36.116448"], ["updated_at", "2016-02-15 23:37:36.116448"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'excited' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "excited"], ["created_at", "2016-02-15 23:37:36.120890"], ["updated_at", "2016-02-15 23:37:36.120890"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'expensive' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "expensive"], ["created_at", "2016-02-15 23:37:36.123861"], ["updated_at", "2016-02-15 23:37:36.123861"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'exuberant' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "exuberant"], ["created_at", "2016-02-15 23:37:36.130705"], ["updated_at", "2016-02-15 23:37:36.130705"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'fair' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "fair"], ["created_at", "2016-02-15 23:37:36.133290"], ["updated_at", "2016-02-15 23:37:36.133290"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'faithful' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "faithful"], ["created_at", "2016-02-15 23:37:36.135874"], ["updated_at", "2016-02-15 23:37:36.135874"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'famous' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "famous"], ["created_at", "2016-02-15 23:37:36.138859"], ["updated_at", "2016-02-15 23:37:36.138859"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'fancy' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "fancy"], ["created_at", "2016-02-15 23:37:36.141667"], ["updated_at", "2016-02-15 23:37:36.141667"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'fantastic' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "fantastic"], ["created_at", "2016-02-15 23:37:36.144373"], ["updated_at", "2016-02-15 23:37:36.144373"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'fierce' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "fierce"], ["created_at", "2016-02-15 23:37:36.147153"], ["updated_at", "2016-02-15 23:37:36.147153"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'filthy' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "filthy"], ["created_at", "2016-02-15 23:37:36.149904"], ["updated_at", "2016-02-15 23:37:36.149904"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'fine' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "fine"], ["created_at", "2016-02-15 23:37:36.152580"], ["updated_at", "2016-02-15 23:37:36.152580"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'foolish' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "foolish"], ["created_at", "2016-02-15 23:37:36.155010"], ["updated_at", "2016-02-15 23:37:36.155010"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'fragile' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "fragile"], ["created_at", "2016-02-15 23:37:36.157454"], ["updated_at", "2016-02-15 23:37:36.157454"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'frail' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "frail"], ["created_at", "2016-02-15 23:37:36.159859"], ["updated_at", "2016-02-15 23:37:36.159859"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'frantic' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "frantic"], ["created_at", "2016-02-15 23:37:36.162468"], ["updated_at", "2016-02-15 23:37:36.162468"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'friendly' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "friendly"], ["created_at", "2016-02-15 23:37:36.164842"], ["updated_at", "2016-02-15 23:37:36.164842"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'frightened' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "frightened"], ["created_at", "2016-02-15 23:37:36.167422"], ["updated_at", "2016-02-15 23:37:36.167422"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'funny' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "funny"], ["created_at", "2016-02-15 23:37:36.170329"], ["updated_at", "2016-02-15 23:37:36.170329"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'gentle' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "gentle"], ["created_at", "2016-02-15 23:37:36.172869"], ["updated_at", "2016-02-15 23:37:36.172869"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'gifted' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "gifted"], ["created_at", "2016-02-15 23:37:36.175414"], ["updated_at", "2016-02-15 23:37:36.175414"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'glamorous' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "glamorous"], ["created_at", "2016-02-15 23:37:36.177841"], ["updated_at", "2016-02-15 23:37:36.177841"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mTag Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'gleaming' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "gleaming"], ["created_at", "2016-02-15 23:37:36.182177"], ["updated_at", "2016-02-15 23:37:36.182177"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'glorious' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "glorious"], ["created_at", "2016-02-15 23:37:36.187630"], ["updated_at", "2016-02-15 23:37:36.187630"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'good' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "good"], ["created_at", "2016-02-15 23:37:36.190596"], ["updated_at", "2016-02-15 23:37:36.190596"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'gorgeous' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "gorgeous"], ["created_at", "2016-02-15 23:37:36.193537"], ["updated_at", "2016-02-15 23:37:36.193537"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'graceful' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "graceful"], ["created_at", "2016-02-15 23:37:36.196143"], ["updated_at", "2016-02-15 23:37:36.196143"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'grieving' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "grieving"], ["created_at", "2016-02-15 23:37:36.199040"], ["updated_at", "2016-02-15 23:37:36.199040"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'grotesque' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "grotesque"], ["created_at", "2016-02-15 23:37:36.201624"], ["updated_at", "2016-02-15 23:37:36.201624"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'grumpy' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "grumpy"], ["created_at", "2016-02-15 23:37:36.204206"], ["updated_at", "2016-02-15 23:37:36.204206"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'handsome' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "handsome"], ["created_at", "2016-02-15 23:37:36.206525"], ["updated_at", "2016-02-15 23:37:36.206525"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'happy' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "happy"], ["created_at", "2016-02-15 23:37:36.209101"], ["updated_at", "2016-02-15 23:37:36.209101"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'healthy' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "healthy"], ["created_at", "2016-02-15 23:37:36.211593"], ["updated_at", "2016-02-15 23:37:36.211593"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'helpful' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "helpful"], ["created_at", "2016-02-15 23:37:36.214202"], ["updated_at", "2016-02-15 23:37:36.214202"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'helpless' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "helpless"], ["created_at", "2016-02-15 23:37:36.217482"], ["updated_at", "2016-02-15 23:37:36.217482"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'hilarious' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "hilarious"], ["created_at", "2016-02-15 23:37:36.220710"], ["updated_at", "2016-02-15 23:37:36.220710"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'homeless' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "homeless"], ["created_at", "2016-02-15 23:37:36.223355"], ["updated_at", "2016-02-15 23:37:36.223355"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'homely' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "homely"], ["created_at", "2016-02-15 23:37:36.225942"], ["updated_at", "2016-02-15 23:37:36.225942"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'horrible' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "horrible"], ["created_at", "2016-02-15 23:37:36.228405"], ["updated_at", "2016-02-15 23:37:36.228405"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'hungry' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "hungry"], ["created_at", "2016-02-15 23:37:36.230942"], ["updated_at", "2016-02-15 23:37:36.230942"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'hurt' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "hurt"], ["created_at", "2016-02-15 23:37:36.233655"], ["updated_at", "2016-02-15 23:37:36.233655"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'ill' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "ill"], ["created_at", "2016-02-15 23:37:36.236043"], ["updated_at", "2016-02-15 23:37:36.236043"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'important' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "important"], ["created_at", "2016-02-15 23:37:36.238985"], ["updated_at", "2016-02-15 23:37:36.238985"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'impossible' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "impossible"], ["created_at", "2016-02-15 23:37:36.241559"], ["updated_at", "2016-02-15 23:37:36.241559"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'inexpensive' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "inexpensive"], ["created_at", "2016-02-15 23:37:36.244007"], ["updated_at", "2016-02-15 23:37:36.244007"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'innocent' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "innocent"], ["created_at", "2016-02-15 23:37:36.246403"], ["updated_at", "2016-02-15 23:37:36.246403"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'inquisitive' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "inquisitive"], ["created_at", "2016-02-15 23:37:36.248794"], ["updated_at", "2016-02-15 23:37:36.248794"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'itchy' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "itchy"], ["created_at", "2016-02-15 23:37:36.251307"], ["updated_at", "2016-02-15 23:37:36.251307"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'jealous' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "jealous"], ["created_at", "2016-02-15 23:37:36.253661"], ["updated_at", "2016-02-15 23:37:36.253661"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'jittery' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "jittery"], ["created_at", "2016-02-15 23:37:36.256065"], ["updated_at", "2016-02-15 23:37:36.256065"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'jolly' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "jolly"], ["created_at", "2016-02-15 23:37:36.258427"], ["updated_at", "2016-02-15 23:37:36.258427"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'joyous' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "joyous"], ["created_at", "2016-02-15 23:37:36.261227"], ["updated_at", "2016-02-15 23:37:36.261227"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'kind' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "kind"], ["created_at", "2016-02-15 23:37:36.263864"], ["updated_at", "2016-02-15 23:37:36.263864"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'lazy' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "lazy"], ["created_at", "2016-02-15 23:37:36.266242"], ["updated_at", "2016-02-15 23:37:36.266242"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'light' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "light"], ["created_at", "2016-02-15 23:37:36.268874"], ["updated_at", "2016-02-15 23:37:36.268874"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'lively' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "lively"], ["created_at", "2016-02-15 23:37:36.271359"], ["updated_at", "2016-02-15 23:37:36.271359"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'lonely' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "lonely"], ["created_at", "2016-02-15 23:37:36.273833"], ["updated_at", "2016-02-15 23:37:36.273833"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'long' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "long"], ["created_at", "2016-02-15 23:37:36.276226"], ["updated_at", "2016-02-15 23:37:36.276226"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'lovely' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "lovely"], ["created_at", "2016-02-15 23:37:36.278899"], ["updated_at", "2016-02-15 23:37:36.278899"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'lucky' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "lucky"], ["created_at", "2016-02-15 23:37:36.281654"], ["updated_at", "2016-02-15 23:37:36.281654"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'magnificent' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "magnificent"], ["created_at", "2016-02-15 23:37:36.284442"], ["updated_at", "2016-02-15 23:37:36.284442"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'misty' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "misty"], ["created_at", "2016-02-15 23:37:36.286963"], ["updated_at", "2016-02-15 23:37:36.286963"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'modern' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "modern"], ["created_at", "2016-02-15 23:37:36.289171"], ["updated_at", "2016-02-15 23:37:36.289171"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'motionless' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "motionless"], ["created_at", "2016-02-15 23:37:36.291719"], ["updated_at", "2016-02-15 23:37:36.291719"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'muddy' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "muddy"], ["created_at", "2016-02-15 23:37:36.294039"], ["updated_at", "2016-02-15 23:37:36.294039"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'mushy' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "mushy"], ["created_at", "2016-02-15 23:37:36.296493"], ["updated_at", "2016-02-15 23:37:36.296493"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'mysterious' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "mysterious"], ["created_at", "2016-02-15 23:37:36.298805"], ["updated_at", "2016-02-15 23:37:36.298805"]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'nasty' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "nasty"], ["created_at", "2016-02-15 23:37:36.301063"], ["updated_at", "2016-02-15 23:37:36.301063"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'naughty' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "naughty"], ["created_at", "2016-02-15 23:37:36.304051"], ["updated_at", "2016-02-15 23:37:36.304051"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'nervous' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "nervous"], ["created_at", "2016-02-15 23:37:36.306433"], ["updated_at", "2016-02-15 23:37:36.306433"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'nice' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "nice"], ["created_at", "2016-02-15 23:37:36.309143"], ["updated_at", "2016-02-15 23:37:36.309143"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'nutty' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "nutty"], ["created_at", "2016-02-15 23:37:36.311526"], ["updated_at", "2016-02-15 23:37:36.311526"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'obedient' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "obedient"], ["created_at", "2016-02-15 23:37:36.314137"], ["updated_at", "2016-02-15 23:37:36.314137"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'obnoxious' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "obnoxious"], ["created_at", "2016-02-15 23:37:36.316633"], ["updated_at", "2016-02-15 23:37:36.316633"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'odd' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "odd"], ["created_at", "2016-02-15 23:37:36.319599"], ["updated_at", "2016-02-15 23:37:36.319599"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'old-fashioned' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "old-fashioned"], ["created_at", "2016-02-15 23:37:36.323427"], ["updated_at", "2016-02-15 23:37:36.323427"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'open' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "open"], ["created_at", "2016-02-15 23:37:36.326568"], ["updated_at", "2016-02-15 23:37:36.326568"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'outrageous' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "outrageous"], ["created_at", "2016-02-15 23:37:36.329083"], ["updated_at", "2016-02-15 23:37:36.329083"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'outstanding' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "outstanding"], ["created_at", "2016-02-15 23:37:36.331719"], ["updated_at", "2016-02-15 23:37:36.331719"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'panicky' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "panicky"], ["created_at", "2016-02-15 23:37:36.334195"], ["updated_at", "2016-02-15 23:37:36.334195"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'perfect' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "perfect"], ["created_at", "2016-02-15 23:37:36.338922"], ["updated_at", "2016-02-15 23:37:36.338922"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'plain' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "plain"], ["created_at", "2016-02-15 23:37:36.341707"], ["updated_at", "2016-02-15 23:37:36.341707"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'pleasant' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "pleasant"], ["created_at", "2016-02-15 23:37:36.344459"], ["updated_at", "2016-02-15 23:37:36.344459"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'poised' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "poised"], ["created_at", "2016-02-15 23:37:36.347278"], ["updated_at", "2016-02-15 23:37:36.347278"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'poor' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "poor"], ["created_at", "2016-02-15 23:37:36.349979"], ["updated_at", "2016-02-15 23:37:36.349979"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'powerful' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "powerful"], ["created_at", "2016-02-15 23:37:36.352436"], ["updated_at", "2016-02-15 23:37:36.352436"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'precious' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "precious"], ["created_at", "2016-02-15 23:37:36.355162"], ["updated_at", "2016-02-15 23:37:36.355162"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'prickly' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "prickly"], ["created_at", "2016-02-15 23:37:36.358248"], ["updated_at", "2016-02-15 23:37:36.358248"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'proud' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "proud"], ["created_at", "2016-02-15 23:37:36.361457"], ["updated_at", "2016-02-15 23:37:36.361457"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'puzzled' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "puzzled"], ["created_at", "2016-02-15 23:37:36.364147"], ["updated_at", "2016-02-15 23:37:36.364147"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'quaint' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "quaint"], ["created_at", "2016-02-15 23:37:36.366870"], ["updated_at", "2016-02-15 23:37:36.366870"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'real' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "real"], ["created_at", "2016-02-15 23:37:36.369808"], ["updated_at", "2016-02-15 23:37:36.369808"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'relieved' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "relieved"], ["created_at", "2016-02-15 23:37:36.373274"], ["updated_at", "2016-02-15 23:37:36.373274"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'repulsive' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "repulsive"], ["created_at", "2016-02-15 23:37:36.376029"], ["updated_at", "2016-02-15 23:37:36.376029"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'rich' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "rich"], ["created_at", "2016-02-15 23:37:36.378715"], ["updated_at", "2016-02-15 23:37:36.378715"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'scary' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "scary"], ["created_at", "2016-02-15 23:37:36.381219"], ["updated_at", "2016-02-15 23:37:36.381219"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'selfish' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "selfish"], ["created_at", "2016-02-15 23:37:36.384134"], ["updated_at", "2016-02-15 23:37:36.384134"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'shiny' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "shiny"], ["created_at", "2016-02-15 23:37:36.386571"], ["updated_at", "2016-02-15 23:37:36.386571"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'shy' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "shy"], ["created_at", "2016-02-15 23:37:36.389069"], ["updated_at", "2016-02-15 23:37:36.389069"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'silly' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "silly"], ["created_at", "2016-02-15 23:37:36.391748"], ["updated_at", "2016-02-15 23:37:36.391748"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'sleepy' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "sleepy"], ["created_at", "2016-02-15 23:37:36.394626"], ["updated_at", "2016-02-15 23:37:36.394626"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'smiling' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "smiling"], ["created_at", "2016-02-15 23:37:36.401071"], ["updated_at", "2016-02-15 23:37:36.401071"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'smoggy' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "smoggy"], ["created_at", "2016-02-15 23:37:36.403740"], ["updated_at", "2016-02-15 23:37:36.403740"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'sore' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "sore"], ["created_at", "2016-02-15 23:37:36.406865"], ["updated_at", "2016-02-15 23:37:36.406865"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'sparkling' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "sparkling"], ["created_at", "2016-02-15 23:37:36.409985"], ["updated_at", "2016-02-15 23:37:36.409985"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'splendid' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "splendid"], ["created_at", "2016-02-15 23:37:36.412701"], ["updated_at", "2016-02-15 23:37:36.412701"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'spotless' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "spotless"], ["created_at", "2016-02-15 23:37:36.415273"], ["updated_at", "2016-02-15 23:37:36.415273"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'stormy' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "stormy"], ["created_at", "2016-02-15 23:37:36.418243"], ["updated_at", "2016-02-15 23:37:36.418243"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'strange' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "strange"], ["created_at", "2016-02-15 23:37:36.420925"], ["updated_at", "2016-02-15 23:37:36.420925"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'stupid' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "stupid"], ["created_at", "2016-02-15 23:37:36.423875"], ["updated_at", "2016-02-15 23:37:36.423875"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'successful' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "successful"], ["created_at", "2016-02-15 23:37:36.426472"], ["updated_at", "2016-02-15 23:37:36.426472"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'super' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "super"], ["created_at", "2016-02-15 23:37:36.429823"], ["updated_at", "2016-02-15 23:37:36.429823"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'talented' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "talented"], ["created_at", "2016-02-15 23:37:36.434847"], ["updated_at", "2016-02-15 23:37:36.434847"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'tame' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "tame"], ["created_at", "2016-02-15 23:37:36.440036"], ["updated_at", "2016-02-15 23:37:36.440036"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'tender' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "tender"], ["created_at", "2016-02-15 23:37:36.442699"], ["updated_at", "2016-02-15 23:37:36.442699"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'tense' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "tense"], ["created_at", "2016-02-15 23:37:36.445230"], ["updated_at", "2016-02-15 23:37:36.445230"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'terrible' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "terrible"], ["created_at", "2016-02-15 23:37:36.448075"], ["updated_at", "2016-02-15 23:37:36.448075"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'testy' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "testy"], ["created_at", "2016-02-15 23:37:36.450740"], ["updated_at", "2016-02-15 23:37:36.450740"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'thankful' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "thankful"], ["created_at", "2016-02-15 23:37:36.454996"], ["updated_at", "2016-02-15 23:37:36.454996"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'thoughtful' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "thoughtful"], ["created_at", "2016-02-15 23:37:36.457535"], ["updated_at", "2016-02-15 23:37:36.457535"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'thoughtless' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "thoughtless"], ["created_at", "2016-02-15 23:37:36.460333"], ["updated_at", "2016-02-15 23:37:36.460333"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'tired' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "tired"], ["created_at", "2016-02-15 23:37:36.463172"], ["updated_at", "2016-02-15 23:37:36.463172"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'tough' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "tough"], ["created_at", "2016-02-15 23:37:36.466415"], ["updated_at", "2016-02-15 23:37:36.466415"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'troubled' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "troubled"], ["created_at", "2016-02-15 23:37:36.470794"], ["updated_at", "2016-02-15 23:37:36.470794"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'ugliest' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "ugliest"], ["created_at", "2016-02-15 23:37:36.473379"], ["updated_at", "2016-02-15 23:37:36.473379"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'ugly' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "ugly"], ["created_at", "2016-02-15 23:37:36.476115"], ["updated_at", "2016-02-15 23:37:36.476115"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'uninterested' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "uninterested"], ["created_at", "2016-02-15 23:37:36.478967"], ["updated_at", "2016-02-15 23:37:36.478967"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'unsightly' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "unsightly"], ["created_at", "2016-02-15 23:37:36.482021"], ["updated_at", "2016-02-15 23:37:36.482021"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'unusual' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "unusual"], ["created_at", "2016-02-15 23:37:36.484734"], ["updated_at", "2016-02-15 23:37:36.484734"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'upset' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "upset"], ["created_at", "2016-02-15 23:37:36.489606"], ["updated_at", "2016-02-15 23:37:36.489606"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'uptight' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "uptight"], ["created_at", "2016-02-15 23:37:36.492261"], ["updated_at", "2016-02-15 23:37:36.492261"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'vast' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "vast"], ["created_at", "2016-02-15 23:37:36.494999"], ["updated_at", "2016-02-15 23:37:36.494999"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'victorious' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "victorious"], ["created_at", "2016-02-15 23:37:36.497978"], ["updated_at", "2016-02-15 23:37:36.497978"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'vivacious' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "vivacious"], ["created_at", "2016-02-15 23:37:36.503837"], ["updated_at", "2016-02-15 23:37:36.503837"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'wandering' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "wandering"], ["created_at", "2016-02-15 23:37:36.508680"], ["updated_at", "2016-02-15 23:37:36.508680"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'weary' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "weary"], ["created_at", "2016-02-15 23:37:36.512798"], ["updated_at", "2016-02-15 23:37:36.512798"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'wicked' LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "wicked"], ["created_at", "2016-02-15 23:37:36.517206"], ["updated_at", "2016-02-15 23:37:36.517206"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'wide-eyed' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "wide-eyed"], ["created_at", "2016-02-15 23:37:36.523571"], ["updated_at", "2016-02-15 23:37:36.523571"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'wild' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "wild"], ["created_at", "2016-02-15 23:37:36.527798"], ["updated_at", "2016-02-15 23:37:36.527798"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'witty' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "witty"], ["created_at", "2016-02-15 23:37:36.532678"], ["updated_at", "2016-02-15 23:37:36.532678"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36mTag Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'worrisome' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "worrisome"], ["created_at", "2016-02-15 23:37:36.538211"], ["updated_at", "2016-02-15 23:37:36.538211"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'worried' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "worried"], ["created_at", "2016-02-15 23:37:36.542394"], ["updated_at", "2016-02-15 23:37:36.542394"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'wrong' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "wrong"], ["created_at", "2016-02-15 23:37:36.545523"], ["updated_at", "2016-02-15 23:37:36.545523"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'zany' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "zany"], ["created_at", "2016-02-15 23:37:36.548178"], ["updated_at", "2016-02-15 23:37:36.548178"]]
+  [1m[36m (21.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'zealous' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "zealous"], ["created_at", "2016-02-15 23:37:36.572030"], ["updated_at", "2016-02-15 23:37:36.572030"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Crookshanks' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Crookshanks"], ["created_at", "2016-02-15 23:37:36.579442"], ["updated_at", "2016-02-15 23:37:36.579442"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'adorable' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "adorable"], ["created_at", "2016-02-15 23:37:36.582470"], ["updated_at", "2016-02-15 23:37:36.582470"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("user_id", "name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "Kittens!"], ["content", "Kitty ipsum dolor sit amet, climb the curtains hairball lay down in your way rip the couch sunbathe, jump on the table stuck in a tree leap lay down in your way bat. Sleep on your keyboard puking catnip chuf, zzz purr hairball claw give me fish I don't like that food sunbathe. Knock over the lamp hiss knock over the lamp stuck in a tree give me fish, meow judging you biting climb the curtains sleep on your face sunbathe sleep on your face. Biting fluffy fur knock over the lamp zzz jump, scratched purr chuf eat the grass judging you sleep on your keyboard. Biting knock over the lamp knock over the lamp feed me, meow sleep in the sink catnip kittens sleep on your face attack. Judging you stuck in a tree zzz bat stuck in a tree puking, fluffy fur sleep on your keyboard kittens jump biting chase the red dot."], ["created_at", "2016-02-15 23:37:36.592970"], ["updated_at", "2016-02-15 23:37:36.592970"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 227], ["post_id", 1], ["created_at", "2016-02-15 23:37:36.600269"], ["updated_at", "2016-02-15 23:37:36.600269"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/posts/new" for ::1 at 2016-02-16 10:37:48 +1100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#new as HTML
+  [1m[35mTag Load (1.1ms)[0m  SELECT "tags".* FROM "tags"
+  Rendered posts/_form.html.erb (156.5ms)
+  Rendered posts/new.html.erb within layouts/application (161.2ms)
+Completed 200 OK in 526ms (Views: 513.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/application.css?body=1" for ::1 at 2016-02-16 10:37:49 +1100
+
+
+Started GET "/assets/scaffolds.css?body=1" for ::1 at 2016-02-16 10:37:49 +1100
+
+
+Started GET "/assets/posts.css?body=1" for ::1 at 2016-02-16 10:37:49 +1100
+
+
+Started GET "/assets/users.css?body=1" for ::1 at 2016-02-16 10:37:49 +1100
+
+
+Started GET "/assets/tags.css?body=1" for ::1 at 2016-02-16 10:37:49 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2016-02-16 10:37:49 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2016-02-16 10:37:49 +1100
+
+
+Started GET "/assets/posts.js?body=1" for ::1 at 2016-02-16 10:37:49 +1100
+
+
+Started GET "/assets/tags.js?body=1" for ::1 at 2016-02-16 10:37:49 +1100
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2016-02-16 10:37:49 +1100
+
+
+Started GET "/assets/users.js?body=1" for ::1 at 2016-02-16 10:37:49 +1100
+
+
+Started POST "/posts" for ::1 at 2016-02-16 10:38:12 +1100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6+ZjIkJh7UgwWSzRlBssTC2JGy4qNtIMdih+7g1ZQ7flz8qqsRzxejnacdY62Tfs8TA3U6vEQ7jSx+nzSKDfkQ==", "post"=>{"name"=>"New Post", "content"=>"This is a new post", "tag_ids"=>["2", "3", "49", "50", "64", ""], "tags_attributes"=>{"0"=>{"name"=>""}}}, "commit"=>"Create Post"}
+Unpermitted parameter: tags_attributes
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (2, 3, 49, 50, 64)[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE ("tags"."name" = 'aggressive' AND "tags"."id" != 2) LIMIT 1[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE ("tags"."name" = 'agreeable' AND "tags"."id" != 3) LIMIT 1
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE ("tags"."name" = 'crazy' AND "tags"."id" != 49) LIMIT 1[0m
+  [1m[35mTag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" WHERE ("tags"."name" = 'creepy' AND "tags"."id" != 50) LIMIT 1
+  [1m[36mTag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE ("tags"."name" = 'difficult' AND "tags"."id" != 64) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "New Post"], ["content", "This is a new post"], ["created_at", "2016-02-15 23:38:12.190913"], ["updated_at", "2016-02-15 23:38:12.190913"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 2], ["post_id", 2], ["created_at", "2016-02-15 23:38:12.192789"], ["updated_at", "2016-02-15 23:38:12.192789"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 3], ["post_id", 2], ["created_at", "2016-02-15 23:38:12.194195"], ["updated_at", "2016-02-15 23:38:12.194195"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 49], ["post_id", 2], ["created_at", "2016-02-15 23:38:12.195776"], ["updated_at", "2016-02-15 23:38:12.195776"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["tag_id", 50], ["post_id", 2], ["created_at", "2016-02-15 23:38:12.197126"], ["updated_at", "2016-02-15 23:38:12.197126"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "post_tags" ("tag_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 64], ["post_id", 2], ["created_at", "2016-02-15 23:38:12.198686"], ["updated_at", "2016-02-15 23:38:12.198686"]]
+  [1m[35m (8.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/posts/2
+Completed 302 Found in 51ms (ActiveRecord: 10.4ms)
+
+
+Started GET "/posts/2" for ::1 at 2016-02-16 10:38:12 +1100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered posts/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for ::1 at 2016-02-16 10:38:12 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2016-02-16 10:38:12 +1100
+
+
+Started GET "/assets/posts.css?body=1" for ::1 at 2016-02-16 10:38:12 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2016-02-16 10:38:12 +1100
+
+
+Started GET "/assets/posts.js?body=1" for ::1 at 2016-02-16 10:38:12 +1100
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2016-02-16 10:38:12 +1100
+
+
+Started GET "/posts/2" for ::1 at 2016-02-16 10:39:08 +1100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "tags"."id" = "post_tags"."tag_id" WHERE "post_tags"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered posts/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for ::1 at 2016-02-16 10:39:09 +1100
+
+
+Started GET "/assets/posts.css?body=1" for ::1 at 2016-02-16 10:39:09 +1100
+
+
+Started GET "/assets/jquery.js?body=1" for ::1 at 2016-02-16 10:39:09 +1100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for ::1 at 2016-02-16 10:39:09 +1100
+
+
+Started GET "/assets/posts.js?body=1" for ::1 at 2016-02-16 10:39:09 +1100
+
+
+Started GET "/assets/application.js?body=1" for ::1 at 2016-02-16 10:39:09 +1100
