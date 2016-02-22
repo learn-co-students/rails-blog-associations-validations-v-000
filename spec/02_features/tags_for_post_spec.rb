@@ -13,6 +13,7 @@ describe 'tags for posts', :type => :feature do
     fill_in('Content', :with => 'post content')
     check('cute')
     click_button('Create Post')
+    save_and_open_page
     expect(page).to have_content("Post title")
     expect(page).to have_content("cute")
   end
