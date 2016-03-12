@@ -22,7 +22,7 @@ describe User do
     let!(:post2) { Post.create(user_id: user.id, name: 'post2', content: 'contente2') }
 
     it 'has many posts' do
-
+binding.pry
       expect(user.posts.count).to eq(2)
     end
   end
