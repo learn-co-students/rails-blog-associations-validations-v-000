@@ -1,4 +1,7 @@
 RailsBlog::Application.routes.draw do
-resources :posts, only: [:new, :create, :show, :edit, :destroy]
+  resources :posts
+  resources :post_tags
+  resources :tags
+  resources :users
 
 end
