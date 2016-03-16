@@ -14,8 +14,8 @@ describe Post do
   end
 
   context 'Post relationship to User and Tag' do
-    let(:user) { User.create(name: 'Crookshanks') }
-    let(:tag1) { Tag.create(name: 'adorable') }
+    let(:user) { User.create(name: 'Crookshanks 2.0') }
+    let(:tag1) { Tag.create(name: 'even more adorable') }
     let(:tag2) { Tag.create(name: 'feline') }
     let(:post) { Post.create(user_id: user.id, name: 'post', content: 'content') }
 
