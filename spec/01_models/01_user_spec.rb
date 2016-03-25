@@ -20,7 +20,7 @@ describe User do
     let!(:post2) { @post2 }
     
     it 'has many posts' do
-      binding.pry
+      
       expect(user.posts.count).to eq(2)
     end
   end
