@@ -20,7 +20,7 @@ describe Tag do
     end
 
     it 'has many posts' do
-  # binding.pry
+ 
       expect(tag.posts.count).to eq(1)
     end
   end

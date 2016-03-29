@@ -6,4 +6,11 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :name, :content
 
+  accepts_nested_attributes_for :tags
+
+  def tag_names
+    self.tags.collect{|t| t.name}
+  end
+
+
 end
