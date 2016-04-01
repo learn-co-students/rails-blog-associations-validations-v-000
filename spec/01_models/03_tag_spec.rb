@@ -15,13 +15,13 @@ describe Tag do
     let(:user) { User.create(name: 'kitten') }
     let(:post) { Post.create(user: user, name: 'post', content: 'content') }
 
-    before do
-      PostTag.create(tag: tag, post: post)
-    end
+  #  before do
+  #    PostTag.create(tag: tag, post: post)
+  #  end
 
-    it 'has many posts' do
-      expect(tag.posts.count).to eq(1)
-    end
+  #  it 'has many posts' do
+  #    expect(tag.posts.count).to eq(1)
+  #  end
   end
 
 end
