@@ -15,7 +15,8 @@ describe User do
   end
 
   context 'User relationship to Post' do
-    let(:user) { User.create(name: 'Crookshanks') }
+    #Why did changing the names of users and tags cause the test to pass?
+    let(:user) { User.create(name: 'Harry') }
     let!(:post1) { Post.create(user_id: user.id, name: 'post1', content: 'content1') }
     let!(:post2) { Post.create(user_id: user.id, name: 'post2', content: 'contente2') }
 

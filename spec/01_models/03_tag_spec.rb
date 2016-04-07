@@ -11,7 +11,8 @@ describe Tag do
   end
 
   context 'Tag relationship to Post' do
-    let(:tag) { Tag.create(name: 'cute') }
+    #Why did changing the names of users and tags cause the test to pass?
+    let(:tag) { Tag.create(name: 'new tag') }
     let(:user) { User.create(name: 'kitten') }
     let(:post) { Post.create(user: user, name: 'post', content: 'content') }
 
