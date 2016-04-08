@@ -15,6 +15,7 @@ describe 'tags for posts', :type => :feature do
     visit '/posts/new'
     fill_in('Name', :with => 'Post title')
     fill_in('Content', :with => 'post content')
+    save_and_open_page
     check('cute')
     click_button('Create Post')
     expect(page).to have_content("Post title")
