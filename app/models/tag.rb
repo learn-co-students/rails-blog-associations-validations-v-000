@@ -3,8 +3,4 @@ class Tag < ActiveRecord::Base
   has_many :posts, through: :post_tags
 
   validates_uniqueness_of :name
-
-  def tag_name
-    self.name
-  end
 end
