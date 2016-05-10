@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @tags = Tag.all
+ 
   end
 
   # GET /posts/1/edit
@@ -25,7 +26,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    binding.pry
+ 
     @post = Post.new(post_params)
     
     respond_to do |format|

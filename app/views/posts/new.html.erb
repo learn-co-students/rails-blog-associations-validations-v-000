@@ -21,7 +21,7 @@
     <label>Content
     <%= f.text_area :content %></label>
  
-    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name  %>
+    <%= f.collection_check_boxes :tag_ids, @tags, :id, :name  %>
 
  
 

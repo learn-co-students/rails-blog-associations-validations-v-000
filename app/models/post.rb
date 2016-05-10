@@ -7,11 +7,11 @@ class Post < ActiveRecord::Base
 
   def create_post_tag(array)
     array.each do |x|
-      binding.pry
+   
       if x == ""
         nil
       else
-        binding.pry
+     
         PostTag.create(tag_id: x, post_id: self.id)
         end
     end
