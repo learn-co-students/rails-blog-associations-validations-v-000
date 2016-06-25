@@ -1,7 +1,6 @@
 RailsBlog::Application.routes.draw do
 
-  resources :tags
+  resources :tags, :users, :posts
 
-  resources :users
 
 end
