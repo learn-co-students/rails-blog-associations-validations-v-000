@@ -4,8 +4,8 @@
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= messsage %></li>
       <% end %>
       </ul>
     </div>
@@ -15,6 +15,16 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %><br>
   </div>
+
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %><br>
+  </div>
+
+  <div class="field">
+    <%=f.collection_check_boxes :tag_ids, Tag.all, :id, :name %> <br>
+  </div>
+
 
   <div class="actions">
     <%= f.submit %>
