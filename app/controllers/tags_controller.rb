@@ -69,4 +69,3 @@ class TagsController < ApplicationController
       params.require(:tag).permit(:name)
     end
 end
-end
