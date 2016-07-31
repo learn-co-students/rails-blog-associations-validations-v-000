@@ -28,14 +28,6 @@ ActiveRecord::Schema.define(version: 20160731162022) do
     t.integer  "user_id"
   end
 
-  create_table "posts_tags", id: false, force: :cascade do |t|
-    t.integer "tag_id",  null: false
-    t.integer "post_id", null: false
-  end
-
-  add_index "posts_tags", ["post_id"], name: "index_posts_tags_on_post_id"
-  add_index "posts_tags", ["tag_id"], name: "index_posts_tags_on_tag_id"
-
   create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
