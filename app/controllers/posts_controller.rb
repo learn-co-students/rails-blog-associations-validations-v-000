@@ -25,6 +25,11 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    params["post"]["tag_ids"].each do |tag_id|
+      if tag_id != ""
+        @post.tags << Tag.find(tag_id)
+      end
+    end
 
     respond_to do |format|
       if @post.save
@@ -40,6 +45,12 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    @post.tags.clear
+    params["post"]["tag_ids"].each do |tag_id|
+      if tag_id != ""
+        @post.tags << Tag.find(tag_id)
+      end
+    end
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -69,6 +80,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name)
+      params.require(:post).permit(:name, :content)
     end
 end
