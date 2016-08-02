@@ -27,7 +27,10 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+    binding.pry
+    if params["post"]["tag_ids"]
+      params["post"]["tag_ids"].each{|tag| tag = tag.to_i}
+    end
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
