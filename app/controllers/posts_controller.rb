@@ -5,7 +5,6 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
-    @tags = Tag.all
   end
 
   # GET /posts/1
@@ -16,7 +15,6 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    @tags = Tag.all
   end
 
   # GET /posts/1/edit
@@ -27,10 +25,6 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-    binding.pry
-    if params["post"]["tag_ids"]
-      params["post"]["tag_ids"].each{|tag| tag = tag.to_i}
-    end
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -45,9 +39,6 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    if params["post"]["tag_ids"]
-      params["post"]["tag_ids"].each{|tag| tag = tag.to_i}
-    end
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }

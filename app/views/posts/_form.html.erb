@@ -20,9 +20,10 @@
     <%= f.label :content %><br>
     <%= f.text_area :content %><br>
   </div>
+
    <div class="field">
-  
-  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+    <%= f.label :tags %><br>
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
   </div>
  
 

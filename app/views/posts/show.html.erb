@@ -1,16 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <h3>Post:</h3>
-  <label>Name:</label><br>
+
+  <h2>Post:</h2>
+
+  <h3>Name:</h3>
   <%= @post.name %><br>
-  <label>Content:</label><br>
+
+  <h3>Content:</h3>
   <%= @post.content %><br>
-  <label>Tags:</label><br>
-  <% @post.tags.each do |tag| %>
-  <%= tag.name %><br>
-  <% end %>
-</p>
+
+  <h3>Tags:</h3>
+  <ul>
+    <% @post.tags.each do |tag| %>
+    <li><%= tag.name %></li>
+    <% end %>
+  </ul>
+
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
