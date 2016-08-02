@@ -1,8 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <h3>Name:</h3>
-  <%= @post.name %>
+  <h3>Post:</h3>
+  <label>Name:</label><br>
+  <%= @post.name %><br>
+  <label>Content:</label><br>
+  <%= @post.content %><br>
+  <label>Tags:</label><br>
+  <% @post.tags.each do |tag| %>
+  <%= tag.name %><br>
+  <% end %>
 </p>
 
 
