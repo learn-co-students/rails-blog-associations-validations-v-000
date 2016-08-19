@@ -1,6 +1,6 @@
 RailsBlog::Application.routes.draw do
-
-  # get 'tag/name:string'
+  resources :posts
+  resources :post_tags
+  resources :tags
   resources :users
-
 end
