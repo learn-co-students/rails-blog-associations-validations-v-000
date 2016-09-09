@@ -3,7 +3,13 @@
 <p>
   <h3>Name:</h3>
   <%= @post.name %>
+  <%= @post.content %>
+  <% @post.tags.each do |tag| %>
+    <%= tag.name%>
+    <% end %>
+
 </p>
+
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
