@@ -1,3 +1,15 @@
 class Post < ActiveRecord::Base
+  belongs_to :user
+  has_many :post_tags
+  has_many :tags, through: :post_tags
   
-end
+  validates :name, presence: true
+  validates :content, presence: true
+
+  validate :both
+  
+  def both
+    self.name != nil
+    self.content != nil
+  end
+end 
