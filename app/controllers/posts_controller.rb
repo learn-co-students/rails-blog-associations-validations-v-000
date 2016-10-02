@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    # raise params.inspect
     @post = Post.new(post_params)
 
     respond_to do |format|
@@ -69,6 +70,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name)
+      # include tag_ids as a key in the post_params hash to include the values from the checkboxes  to denote the value is an array because that array will then be passed on to activerecord and call the tag_ids= settor
+      params.require(:post).permit(:name, :content, :user_id, tag_ids: [] )
     end
 end
