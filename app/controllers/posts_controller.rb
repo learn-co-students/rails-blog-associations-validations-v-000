@@ -27,12 +27,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
-    params[:post][:tag_ids].each do |tag_id|
-      if !tag_id.empty?
-        @tag = Tag.find_by(id: tag_id) 
-        @post.tags << @tag
-      end
-    end
+
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
