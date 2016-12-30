@@ -14,23 +14,21 @@
 ActiveRecord::Schema.define(version: 20161230012752) do
 
   create_table "post_tags", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "tag_id"
     t.integer "post_id"
-    t.string  "tag"
-    t.string  "post"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.string   "content"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
+    t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
