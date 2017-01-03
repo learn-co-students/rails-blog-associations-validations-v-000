@@ -1,0 +1,6 @@
+<h1>Users#new</h1>
+<%= form_for(@user) do |user| %>
+  <%= user.label :name %>
+  <%= user.text_field :name %><br>
+  <%= user.submit %>
+<% end %>
