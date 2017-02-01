@@ -6,6 +6,6 @@ RailsBlog::Application.routes.draw do
 
   resources :users
 
-  resources :posts, only: :new
+  resources :posts, only: [:new, :create, :edit, :update, :show]
 
 end
