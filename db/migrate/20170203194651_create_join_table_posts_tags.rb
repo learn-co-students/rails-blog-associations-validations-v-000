@@ -1,8 +1,9 @@
 class CreateJoinTablePostsTags < ActiveRecord::Migration
   def change
-    create_join_table :posts, :tags do |t|
-      # t.index [:post_id, :tag_id]
-      # t.index [:tag_id, :post_id]
+    create_table :post_tags do |t|
+      t.integer :post_id
+      t.integer :tag_id
+      t.timestamps null: false
     end
   end
 end
