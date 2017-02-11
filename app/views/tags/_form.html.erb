@@ -1,10 +1,10 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
+<%= form_for(@tag) do |f| %>
+  <% if @tag.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
 
       <ul>
-      <% @post.errors.full_messages.each do |msg| %>
+      <% @tag.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %><br>
+    <%= f.text_field :name %>
   </div>
 
   <div class="actions">
