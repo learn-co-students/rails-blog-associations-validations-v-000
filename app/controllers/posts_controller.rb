@@ -25,10 +25,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-    if @post.valid?
-
-      tag_ids = params[:post][:tag_ids].reject { |c| c.empty? }
-      if tag_ids.any?
+    if @post.valid?    
+      if tag_ids = params[:post][:tag_ids].reject { |t| t.empty? }
         tag_ids.each do |tag_id|
           @post.tags << Tag.find(tag_id)
         end
