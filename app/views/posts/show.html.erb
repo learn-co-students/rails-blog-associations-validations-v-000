@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
   <h3>Name:</h3>
   <%= @post.name %>
-</p>
 
+  <h3>Tags:</h3>
+  <% @post.tags.each do |tag| %>
+    <%= tag.name %><br>
+  <% end %>
+  <br>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
