@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   def create
     # binding.pry
     @post = Post.new(post_params)
-    binding.pry
+    # binding.pry
     respond_to do |format|
       if @post.save
 
