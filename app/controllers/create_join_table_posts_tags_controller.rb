@@ -1,0 +1,2 @@
+class CreateJoinTablePostsTagsController < ApplicationController
+end

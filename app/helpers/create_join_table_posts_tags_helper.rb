@@ -1,0 +1,2 @@
+module CreateJoinTablePostsTagsHelper
+end
