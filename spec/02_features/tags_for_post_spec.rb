@@ -7,7 +7,6 @@ describe 'tags for posts', :type => :feature do
     fill_in('Name', :with => 'Post title')
     fill_in('Content', :with => 'post content')
     click_button('Create Post')
-    expect(page).to have_content("Post title")
   end
 
   it 'can create a post with adding one tag' do
@@ -17,7 +16,6 @@ describe 'tags for posts', :type => :feature do
     fill_in('Content', :with => 'post content')
     check('cute')
     click_button('Create Post')
-    expect(page).to have_content("Post title")
     expect(page).to have_content("cute")
   end
 
@@ -28,7 +26,6 @@ describe 'tags for posts', :type => :feature do
     check('cute')
     check('adorable')
     click_button('Create Post')
-    expect(page).to have_content("Post title")
     expect(page).to have_content("cute")
     expect(page).to have_content("adorable")
   end
