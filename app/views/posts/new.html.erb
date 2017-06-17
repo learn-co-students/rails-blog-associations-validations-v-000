@@ -1,11 +1,34 @@
 <h1>New Post</h1>
+
+
 <%= form_for(@post) do |f| %>
-  <label>Name</label><br>
-  <%= f.text_field :name, id: "Name" %><br>
-  <label>Content</label><br>
-  <%= f.text_field :content, id: "Content" %><br>
-  <label>Tags:</label><br>
-  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :tag_name %>
-  <%= f.submit "Create Post" %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %><br>
+  </div>
+
+  <div class="field">
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, tag_name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
-<%= link_to 'Back', posts_path %>
