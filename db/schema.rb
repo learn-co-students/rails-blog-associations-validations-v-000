@@ -14,6 +14,8 @@
 ActiveRecord::Schema.define(version: 20170710224405) do
 
   create_table "post_tags", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "post_id"
   end
 
   create_table "posts", force: :cascade do |t|
