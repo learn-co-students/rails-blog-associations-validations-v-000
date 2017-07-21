@@ -10,6 +10,14 @@
   <%= @post.content %>
 </p>
 
+<p>
+  <h3>Tags:</h3>
+  <ul>
+    <% @post.tags.each do |tag| %>
+    <li><%= tag.name %></li>
+    <% end %>
+  </ul>
+</p>
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
