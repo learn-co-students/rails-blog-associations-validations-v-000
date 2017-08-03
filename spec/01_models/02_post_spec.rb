@@ -20,8 +20,8 @@ describe Post do
     let(:post) { Post.create(user_id: user.id, name: 'post', content: 'content') }
 
     before do
-      PostTag.create(tag_id: tag1.id, post_id: post.id)
-      PostTag.create(tag_id: tag2.id, post_id: post.id)
+      PostTagLink.create(tag_id: tag1.id, post_id: post.id)
+      PostTagLink.create(tag_id: tag2.id, post_id: post.id)
     end
 
     it 'belongs to a user' do
