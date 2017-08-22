@@ -16,6 +16,24 @@
     <%= f.text_field :name %><br>
   </div>
 
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %><br>
+  </div>
+
+  <fieldset>
+    <legend>Tag this post</legend>
+    <%counter = 0%>
+    <%@tags.each do |tag|%>
+    <div>
+      <input type="checkbox" id="<%=tag.name%>" name="tags[<%=tag.name%>]" value="<%=tag.id%>">
+      <label for="<%=tag.name%>"><%=tag.name%></label>
+      <%counter+=1%>
+    </div>
+    <%end%>
+  </fieldset>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
