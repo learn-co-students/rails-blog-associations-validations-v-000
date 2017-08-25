@@ -14,6 +14,13 @@ class PostsController < ApplicationController
 
 	def create
 		@post = Post.create(post_params(:name, :content))
+    if params[:post][:tag_ids].size > 1
+      params[:post][:tag_ids].each do |t|
+          if !t.blank?
+            @post.tags << Tag.find_by_id(t.to_i)
+          end
+      end
+    end
     if @post.errors.full_messages.size > 0
       render :new
     else
