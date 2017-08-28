@@ -11,12 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
+
+
+   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %><br>
     <%= f.label :content %><br>
     <%= f.text_area :content %>
   </div>
+
+
   <div class="field">
     <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
   </div> 
@@ -29,6 +33,7 @@
 <% end %>
 
 
+ 
 <%# 
   it 'can create a post without adding tags' do
     visit '/posts/new'
