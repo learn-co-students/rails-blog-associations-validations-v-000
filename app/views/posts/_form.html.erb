@@ -15,8 +15,22 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %><br>
   </div>
+    <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %><br>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<%# 
+  it 'can create a post without adding tags' do
+    visit '/posts/new'
+    fill_in('Name', :with => 'Post title')
+    fill_in('Content', :with => 'post content')
+    click_button('Create Post')
+    expect(page).to have_content("Post title")
+  end %>
