@@ -1,7 +1,8 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-  has_many :tags, through: :posts_tags
-  has_many :posts_tags
+  has_many :post_tags
+  has_many :tags, through: :post_tags
+  
 
   validates :name, presence: true
   validates :name, uniqueness: true
