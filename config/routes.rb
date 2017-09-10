@@ -1,6 +1,6 @@
 RailsBlog::Application.routes.draw do
 
-  resources :posts, only: [:index, :new, :show, :edit]
+  resources :posts
 
   resources :post_tags
 

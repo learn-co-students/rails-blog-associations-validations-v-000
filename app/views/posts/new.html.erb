@@ -2,9 +2,5 @@
 
 <%= render 'form' %>
 
-<%= form_for @post do |f| %>
-  <%= f.collection_check_boxes :user_ids, User.all, :id %>
-  <%= f.submit %>
-<% end %>
 
 <%= link_to 'Back', posts_path %>
