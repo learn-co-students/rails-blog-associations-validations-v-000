@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+<<<<<<< HEAD
 
   # I have to build this model out using crud
   # index, show, new, create, edit, update
@@ -30,4 +31,6 @@ class TagsController < ApplicationController
     params.require(:tag).permit(:name)
   end
 
+=======
+>>>>>>> a2961950387f43b355eaf3c1493907e74c840492
 end
