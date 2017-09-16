@@ -3,13 +3,6 @@ class Post < ActiveRecord::Base
   has_many :post_tags
   has_many :tags, through: :post_tags
   
-  validates :name, presence: true
-  validates :content, presence: true
+  validates :name, :content, { presence: true }
 
-  validate :both
-  
-  def both
-    self.name != nil
-    self.content != nil
-  end
 end 
