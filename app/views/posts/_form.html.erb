@@ -16,6 +16,17 @@
     <%= f.text_field :name %><br>
   </div>
 
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %><br>
+  </div>
+
+  <div class="field">
+    <%= collection_check_boxes(:post, :tag_ids, Tag.all, :id, :name) do |b| %>
+      <%= b.label(for: b.object.name.to_sym) { b.check_box + b.object.name } %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
