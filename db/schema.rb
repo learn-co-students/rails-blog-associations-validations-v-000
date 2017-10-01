@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20171001194445) do
 
   create_table "post_tags", force: :cascade do |t|
-    t.string "post"
-    t.string "tag"
+    t.integer "post_id"
+    t.integer "tag_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -31,10 +31,7 @@ ActiveRecord::Schema.define(version: 20171001194445) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "name"
-    t.integer "post_id"
+    t.string "name"
   end
-
-  add_index "users", ["post_id"], name: "index_users_on_post_id"
 
 end
