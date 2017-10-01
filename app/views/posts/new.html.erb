@@ -4,6 +4,7 @@
   <%= f.text_field :name %></p>
   <p><%= f.label :content %>
   <%= f.text_field :content %></p>
+  <p><%= f.label :tag_ids %>
   <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
   <%= f.submit %>
 <% end %>
