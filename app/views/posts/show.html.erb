@@ -1,9 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <h3>Name:</h3>
-  <%= @post.name %>
-</p>
+<div>
+  <h3>Name: <%= @post.name %> </h3>
+  <p><%=@post.content%></p>
+  <% if @post.tags.any? %>
+    <p><%=pluralize(@post.tags.count, "Tag")%></p>
+    <ul>
+    <% @post.tags.each do |t| %>
+      <li><%=t.name%></li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
