@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20171020203224) do
     t.datetime "updated_at", null: false
     t.text     "content"
     t.integer  "author_id"
+    t.integer  "user_id"
   end
 
   create_table "tags", force: :cascade do |t|
