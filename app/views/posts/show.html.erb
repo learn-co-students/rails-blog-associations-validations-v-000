@@ -2,7 +2,14 @@
 
 <p>
   <h3>Name:</h3>
-  <%= @post.name %>
+  <h4><%= @post.name %></h4>
+  <p><%= @post.content %></p>
+  <h4><%= pluralize(@post.tags.count, "Tag") %></h4>
+  <ul>
+    <% @post.tags.each do |tag| %>
+      <li><%= tag.name %></li>
+    <% end %>
+  </ul>
 </p>
 
 
