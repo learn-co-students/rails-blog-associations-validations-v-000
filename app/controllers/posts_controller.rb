@@ -1,3 +1,4 @@
+require 'pry'
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
@@ -25,7 +26,22 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.create(post_params)
+
+    params["post"]["tag_ids"].each do |tag|
+       if tag != ""
+         @post.tags << Tag.find(tag.to_i)
+       end
+    end
+
     if @post.valid?
+      #binding.pry
+
+      params["post"]["tag_ids"].each do |tag|
+         if tag != ""
+           @post.tags << Tag.find(tag.to_i)
+         end
+      end
+
       redirect_to post_path(@post)
     else
       render :new
@@ -64,6 +80,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name, )
+      params.require(:post).permit(:name, :content, :tag_ids)
     end
 end
