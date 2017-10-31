@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<!-- <p>
+  <h3>Name:</h3>
+  <%= @tag.name %>
+</p> -->
+
+<p>
+  <h3>Name:</h3>
+  <%= @tag.name %>
+  <h3>Content:</h3>
+  <%= @tag.content %>
+  <h3>Tags:</h3>
+  <ul>
+    <% @tag.tags.each do |tag| %>
+    <li><%= tag.name %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_tag_path(@tag) %> |
+<%= link_to 'Back', tags_path %>

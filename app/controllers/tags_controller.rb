@@ -15,7 +15,7 @@ class TagsController < ApplicationController
   def edit
   end
 
-  def created
+  def create
     @tag = Tag.new(tag_params)
 
     respond_to do |format|
