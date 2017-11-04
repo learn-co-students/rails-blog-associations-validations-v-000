@@ -1,0 +1,7 @@
+<h2>Post tags</h2>
+
+<% @tags.each do |tag| %>
+  <ul>
+    <li><%= link_to tag.name, tag_path(tag) %></li>
+  </ul>
+<% end %>
