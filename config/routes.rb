@@ -4,4 +4,5 @@ RailsBlog::Application.routes.draw do
   #get 'user/name:string'
 
   #get 'tag/name:string'
+  resources :tag, only: [:new] 
 end
