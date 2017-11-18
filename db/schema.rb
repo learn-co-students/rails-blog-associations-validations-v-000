@@ -29,13 +29,6 @@ ActiveRecord::Schema.define(version: 20171118061948) do
     t.integer  "tag_id"
   end
 
-  create_table "posts_tags", force: :cascade do |t|
-    t.integer  "post_id"
-    t.integer  "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false

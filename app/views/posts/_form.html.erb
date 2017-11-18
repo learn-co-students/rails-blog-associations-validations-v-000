@@ -20,7 +20,7 @@
     <%= f.text_area :content %><br>
 
     <%= f.label :tag_ids, value: 'Tags' %><br>
-    <%= f.collection_check_boxes (:post, :tag_ids, Tag.all, :id, :name) %><br>
+    <%= collection_check_boxes(:post, :tag_ids, Tag.all, :id, :name) %><br>
   </div>
 
 
