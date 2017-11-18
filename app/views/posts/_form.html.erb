@@ -16,6 +16,18 @@
     <%= f.text_field :name %><br>
   </div>
 
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %><br>
+  </div>
+    <% @tags.each_with_index do |tag, i| %>
+    <%= label_tag(tag.name) %>
+    <%= check_box_tag tag.name  %>
+      <% if i % 5 == 0 %>
+        <br>
+      <% end %>
+    <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
