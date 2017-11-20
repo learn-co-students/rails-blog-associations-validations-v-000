@@ -1,3 +1,5 @@
+require 'pry'
+
 describe Post do
   context 'Post validations' do
     it "post is valid" do
@@ -26,6 +28,7 @@ describe Post do
 
     it 'belongs to a user' do
       expect(post.user).to eq(user)
+        #    binding.pry
     end
 
     it 'has many tags' do
