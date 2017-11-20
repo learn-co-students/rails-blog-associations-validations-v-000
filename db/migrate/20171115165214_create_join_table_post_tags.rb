@@ -1,6 +1,6 @@
-class CreateJoinTablePostTag < ActiveRecord::Migration
+class CreateJoinTablePostTags < ActiveRecord::Migration
   def change
-    create_join_table :posts, :tags do |t|
+    create_join_table :post, :tags do |t|
       t.index [:post_id, :tag_id]
       t.index [:tag_id, :post_id]
     end
