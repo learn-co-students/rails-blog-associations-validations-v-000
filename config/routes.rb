@@ -1,8 +1,7 @@
 RailsBlog::Application.routes.draw do
-  resources :posts, only: [:index, :show, :edit, :update, :destroy]
-
+  resources :posts
   #get 'user/name:string'
 
   #get 'tag/name:string'
-  resources :tag, only: [:new] 
+  resources :tag, only: [:new]
 end

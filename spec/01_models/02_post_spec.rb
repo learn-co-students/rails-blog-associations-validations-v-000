@@ -29,6 +29,7 @@ describe Post do
     end
 
     it 'has many tags' do
+      #binding.pry
       expect(post.tags.count).to eq(2)
     end
   end

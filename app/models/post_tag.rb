@@ -1,6 +1,5 @@
 class PostTag < ActiveRecord::Base
 
-  belongs_to :user
-
-  has_many :tags, :through => :post_tags, :source => :name
+  belongs_to :post
+  belongs_to :tag
 end
