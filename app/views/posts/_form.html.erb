@@ -13,7 +13,16 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %><br>
+    <%= f.text_field :name, id: "Name" %><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %><br>
+  </div>
+
+  <div class="field">
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :name, :name) %>
   </div>
 
   <div class="actions">
