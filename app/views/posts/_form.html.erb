@@ -22,7 +22,7 @@
   </div>
 
   <div class="field">
-    <%= f.collection_check_boxes(:tag_ids, Tag.all, :name, :name) %>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name, include_hidden: false) %>
   </div>
 
   <div class="actions">

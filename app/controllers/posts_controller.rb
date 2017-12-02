@@ -24,8 +24,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    params[:post][:tag_ids]
     @post = Post.new(post_params)
+  
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -41,6 +41,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
+
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
