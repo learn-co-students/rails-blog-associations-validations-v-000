@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.find(params[:id])
   end
 
   # GET /posts/new
@@ -25,6 +26,15 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    tags = []
+    params["post"]["tag_ids"].each do |id|
+      tags << Tag.find_by(id: id) if id != ""
+    end
+
+    if !tags.nil?
+      @post.tags << tags
+    end
+
 
     respond_to do |format|
       if @post.save
@@ -69,6 +79,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name)
+      params.require(:post).permit(:name, :content, :tag_id)
     end
 end
