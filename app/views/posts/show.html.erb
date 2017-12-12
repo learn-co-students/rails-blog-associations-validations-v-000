@@ -5,6 +5,19 @@
   <%= @post.name %>
 </p>
 
+<p>
+  <h3>Content:</h3>
+  <%= @post.content %>
+</p>
+
+<% unless @post.tags.empty? %>
+  <h3>Post Tags:</h3>
+  <% @post.tags.each do |tag| %>
+    <div><%= tag.name %></div>
+  <% end %>
+<% end %>
+
+
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
