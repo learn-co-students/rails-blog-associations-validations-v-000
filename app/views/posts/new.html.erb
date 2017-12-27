@@ -2,9 +2,7 @@
 
 <%= render 'form' %>
 
-<%= form_for @post do |f| %>
-  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
-  <%= f.submit %>
-<% end %>
 
+
+<br>
 <%= link_to 'Back', posts_path %>
