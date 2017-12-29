@@ -16,6 +16,17 @@
     <%= f.text_field :name %><br>
   </div>
 
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %><br>
+  </div>
+
+  <div class="field">
+    <label>Check existing tags:</label>
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
+    Or create a new tag <a class="nav-link" href="/tags/new">here</a>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
