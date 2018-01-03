@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-	has_many :post_tags
-	has_many :posts, through => :post_tags
-	validates_uniqueness_of :name
+
+	has_many :posts
+
+	validates :name, uniqueness: true
+	validates :name, presence: true 
 end
