@@ -7,11 +7,11 @@ describe Post do
     it "is invalid with no name" do
       expect(Post.create(name: nil, content: "i have no name")).to_not be_valid
     end
-
+  #
     it "is invalid with no content" do
-      expect(Post.create(name: "Name", content: nil)).to_not be_valid
+       expect(Post.create(name: "Name", content: nil)).to_not be_valid
     end
-  end
+   end
 
   context 'Post relationship to User and Tag' do
     let(:user) { User.create(name: 'Crookshanks') }
