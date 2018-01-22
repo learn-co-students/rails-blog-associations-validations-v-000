@@ -28,6 +28,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        if params[:post][:tag_ids]
+          params[:post][:tag_ids].each {|t| PostTag.create(post_id: @post_id, tag_id: t.to_i)}
+        end
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
@@ -42,6 +45,9 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
+        if params[:post][:tag_ids]
+          params[:post][:tag_ids].each {|t| PostTag.create(post_id: @post_id, tag_id: t.to_i)}
+        end
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
@@ -69,6 +75,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name)
+      params.require(:post).permit(:name, :content, :tag_ids=>[])
     end
 end
