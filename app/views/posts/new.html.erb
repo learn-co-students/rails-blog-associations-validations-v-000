@@ -1,5 +1,15 @@
 <h1>New post</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', posts_path %>
+<%= form_for @post do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %><br>
+<%= f.label :content %>
+<%= f.text_area :content %><br>
+<%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, checked: Tag.all.map(&:id) do |b| %>
+  <span>
+    <%= b.check_box %>
+    <%= b.label %>
+  </span>
+  <% end %>
+  <%= f.submit %>
+<% end %>
