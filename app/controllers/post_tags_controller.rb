@@ -1,74 +1,74 @@
-class PostTagsController < ApplicationController
-  before_action :set_post_tag, only: [:show, :edit, :update, :destroy]
+class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  # GET /post_tags
-  # GET /post_tags.json
+  # GET /posts
+  # GET /posts.json
   def index
-    @post_tags = PostTag.all
+    @posts = Post.all
   end
 
-  # GET /post_tags/1
-  # GET /post_tags/1.json
+  # GET /posts/1
+  # GET /posts/1.json
   def show
   end
 
-  # GET /post_tags/new
+  # GET /posts/new
   def new
-    @post_tag = PostTag.new
+    @post = Post.new
   end
 
-  # GET /post_tags/1/edit
+  # GET /posts/1/edit
   def edit
   end
 
-  # POST /post_tags
-  # POST /post_tags.json
+  # POST /posts
+  # POST /posts.json
   def create
-    @post_tag = PostTag.new(post_tag_params)
+    @post = Post.new(post_params)
 
     respond_to do |format|
-      if @post_tag.save
-        format.html { redirect_to @post_tag, notice: 'Post tag was successfully created.' }
-        format.json { render :show, status: :created, location: @post_tag }
+      if @post.save
+        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @post }
       else
-        format.html { render :new }
-        format.json { render json: @post_tag.errors, status: :unprocessable_entity }
+        format.html { render action: 'new' }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /post_tags/1
-  # PATCH/PUT /post_tags/1.json
+  # PATCH/PUT /posts/1
+  # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
-      if @post_tag.update(post_tag_params)
-        format.html { redirect_to @post_tag, notice: 'Post tag was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post_tag }
+      if @post.update(post_params)
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.json { head :no_content }
       else
-        format.html { render :edit }
-        format.json { render json: @post_tag.errors, status: :unprocessable_entity }
+        format.html { render action: 'edit' }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /post_tags/1
-  # DELETE /post_tags/1.json
+  # DELETE /posts/1
+  # DELETE /posts/1.json
   def destroy
-    @post_tag.destroy
+    @post.destroy
     respond_to do |format|
-      format.html { redirect_to post_tags_url, notice: 'Post tag was successfully destroyed.' }
+      format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_post_tag
-      @post_tag = PostTag.find(params[:id])
+    def set_post
+      @post = Post.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def post_tag_params
-      params.require(:post_tag).permit(:post_id, :tag_id)
+    def post_params
+      params.require(:post).permit(:name, :content, :tag_ids => [])
     end
 end
