@@ -19,6 +19,7 @@
     <%= f.label :content %><br>
     <%= f.text_area :content, :input_html => { :id => 'Contrent'} %><br>
   </div>
+<<<<<<< HEAD
 
  <div class="field">
      <%= f.label :tags %> <br />
@@ -26,5 +27,21 @@
  </div>
   <div class="actions">
     <%= f.submit class: "btn btn-default" %>
+=======
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %><br>
+  </div>
+  <div class="field">
+    <%= f.label :tags %><br>
+    Cute: <%= f.checkbox :tags, {}, 'cute', nil %><br>
+  </div>
+  <div class="field">
+    <%= f.label :tags %><br>
+    Adorable: <%= f.checkbox :tags, {}, 'adorable', nil %><br>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Post"%>
+>>>>>>> e4dc6b83b61da2b3acaac30d5b65e118c45c37e7
   </div>
 <% end %>
