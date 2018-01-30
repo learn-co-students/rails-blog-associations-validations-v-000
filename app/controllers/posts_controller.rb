@@ -25,9 +25,9 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-    create_tags
     respond_to do |format|
       if @post.save
+        create_tags
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
@@ -40,12 +40,12 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    clear_tags
-    create_tags
     @post.name = params[:post][:name]
     @post.content = params[:post][:content]
     respond_to do |format|
       if @post.update(post_params)
+        clear_tags
+        create_tags
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
