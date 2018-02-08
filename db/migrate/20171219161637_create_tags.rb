@@ -1,6 +1,6 @@
-class CreatePosts < ActiveRecord::Migration
+class CreateTags < ActiveRecord::Migration
   def change
-    create_table :posts do |t|
+    create_table :tags do |t|
       t.string :name
       t.timestamps null: false
     end
