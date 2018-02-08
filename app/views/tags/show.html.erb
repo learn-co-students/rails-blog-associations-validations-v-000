@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h3>Name:</h3>
+  <%= @tag.name %><br><br>
+  <% @tag.posts.each do |post| %>
+    <%= link_to post.name, post_path(post) %><br>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_tag_path(@tag) %> |
+<%= link_to 'Back', tags_path %> |
+<%= link_to 'Destroy', @tag, method: :delete, data: { confirm: 'Are you sure?' } %>
