@@ -5,6 +5,14 @@
   <%= @post.name %>
 </p>
 
+<p> Here are all the tags selected:
+<% if @post.tag_ids != []%>
+<% @post.tag_ids.each do |tag_id| %>
+<%= Tag.find(tag_id).name %>
+<%end%>
+<%end%>
+
+</p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
