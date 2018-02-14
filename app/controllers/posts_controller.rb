@@ -1,3 +1,5 @@
+require 'pry'
+
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
@@ -24,10 +26,17 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    #binding.pry
     @post = Post.new(post_params)
 
     respond_to do |format|
       if @post.save
+        params[:post][:tags].each do |tag|
+          if !tag.empty?
+            @tag = Tag.find(tag)
+            @post.tags << @tag
+          end
+        end
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
@@ -69,6 +78,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name)
+      params.require(:post).permit(:name, :content)
     end
 end
