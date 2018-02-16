@@ -1,0 +1,38 @@
+Create a migration, model and controller for User and Tag (via rails generate). Check out the documentation on generators, and remember to skip adding tests.
+      rails g resource User name:string  --no-test-framework
+      rails g resource Tag name:string  --no-test-framework
+
+In order to create the appropriate associations between Post and Tag, we need to create a join table as well.
+      rails g model Post_Tag post_id:integer tag_id:integer
+
+Build out model associations and migrations.
+      post_tag  (join table)
+              belongs to post
+              belongs to tag
+      post
+              belongs to a user
+              has many tags through post_tags (also needs a has many post_tags)
+      tag
+              has many posts through post_tags (also needs a has many post_tags)
+      user
+              has many posts
+              
+
+Be sure to create the appropriate routes. For now, they can be written as resources. (default with rails g resource)
+
+create the database, migrate the schema, and seed it.
+      current seed file gives context for User and Tag content
+
+Make the model association tests pass.
+
+Model Validations
+      Post for the presence of both name and content
+      User for the uniqueness of name
+      Tag for the uniqueness of name
+
+
+Build out forms for creating a new post to incorporate errors
+
+Create a form on the posts form page that lists all the tags as checkboxes, allowing a user to select multiple tags.
+
+features/tags_for_posts_spec.rb
