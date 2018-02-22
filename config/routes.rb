@@ -1,5 +1,3 @@
 RailsBlog::Application.routes.draw do
-
-  resources :tags
-  resources :users
+  resources :posts, only: [:index, :show, :new, :create, :edit, :update, :delete]
 end
