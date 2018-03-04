@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  has_many :tags
+  belongs_to :user
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
