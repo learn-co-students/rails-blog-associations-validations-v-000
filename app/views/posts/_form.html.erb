@@ -16,6 +16,11 @@
     <%= f.text_field :name %><br>
   </div>
   
+   <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+  </div>
+  
    <%= form_for @post do |f| %>
   <%= f.collection_check_boxes :tag_ids, Tag.all, :id %>
   <%= f.submit %>
