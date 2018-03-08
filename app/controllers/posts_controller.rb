@@ -61,6 +61,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def errors_message
+    errors.add(:name, "title can't be blank")
+    errors.add(:content, "content can't be blank")
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -69,6 +74,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name)
+      params.require(:post).permit(:name, :content, :tag_ids =>[])
     end
 end

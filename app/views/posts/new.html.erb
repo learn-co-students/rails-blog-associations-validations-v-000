@@ -1,5 +1,25 @@
-<h1>New post</h1>
+<h1>New Post</h1>
 
-<%= render 'form' %>
+<% if @post.errors.any? %>
+  <div>
+    <h2> There were some errors: </h2>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-<%= link_to 'Back', posts_path %>
+<%= form_for @post do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %> <br>
+
+  <%= f.label :content, "Content" %>
+  <%= f.text_field :content %> <br>
+
+  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+   <br>
+
+  <%= f.submit "Create Post" %>
+<% end %>
