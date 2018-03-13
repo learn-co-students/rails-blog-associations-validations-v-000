@@ -32,4 +32,5 @@ describe 'tags for posts', :type => :feature do
     expect(page).to have_content("cute")
     expect(page).to have_content("adorable")
   end
+
 end
