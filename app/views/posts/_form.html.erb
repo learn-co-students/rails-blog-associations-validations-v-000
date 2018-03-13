@@ -7,6 +7,7 @@
       <% @post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
+
       </ul>
     </div>
   <% end %>
@@ -14,6 +15,16 @@
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %><br>
+  </div>
+
+  <div class="check_box">
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+    <br><br>
   </div>
 
   <div class="actions">
