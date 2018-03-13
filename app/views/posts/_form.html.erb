@@ -12,8 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %><br>
+    <label>Post title</label><br>
+    <%= f.text_field :name, placeholder: "Name" %><br>
+  </div>
+
+  <div class="field">
+    <label>Content</label><br>
+    <%= f.text_field :content, placeholder: "Content" %><br>
+  </div>
+
+  <div class="field">
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
   </div>
 
   <div class="actions">
