@@ -3,6 +3,14 @@
 <p>
   <h3>Name:</h3>
   <%= @post.name %>
+  <% if @post.tags.any? %>
+    <h3><%= pluralize(@post.tags.count, 'Feeling') %>:</h3>
+      <% @post.tags.each do |tag| %>
+          <span><%= tag.name %><%= ", " unless tag == @post.tags.last %></span>
+      <% end %>
+  <% end %>
+  <h3>Content:</h3>
+
 </p>
 
 
