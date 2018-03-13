@@ -4,3 +4,7 @@
 require File.expand_path('../config/application', __FILE__)
 
 RailsBlog::Application.load_tasks
+
+task :console => :environment do
+  Pry.start
+end
