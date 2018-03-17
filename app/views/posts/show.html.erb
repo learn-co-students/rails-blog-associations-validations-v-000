@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <h3>Name:</h3>
-  <%= @post.name %>
+  <h3>Post Title:</h3>
+  <%= @post.name %>:<br>
+  <%= @post.content %>
+  <% @post.tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+
 </p>
 
 
