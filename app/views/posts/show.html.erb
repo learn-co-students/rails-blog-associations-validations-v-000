@@ -4,6 +4,14 @@
   <h3>Name:</h3>
   <%= @post.name %>
 </p>
+<p>
+  <h3>Tags:</h3>
+  <% @tags = PostTag.where(post_id: @post.id) %>
+  <% @tags.each do |t| %>
+  <% tag = Tag.find_by(id: t.tag_id) %>
+  <h4><%= tag.name %><h4>
+  <% end %>
+</p>
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
