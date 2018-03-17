@@ -15,11 +15,12 @@ describe User do
   end
 
   context 'User relationship to Post' do
-    let(:user) { User.create(name: 'Crookshanks') }
+    let(:user) { User.create(name: 'Crookshanks2') }
     let!(:post1) { Post.create(user_id: user.id, name: 'post1', content: 'content1') }
     let!(:post2) { Post.create(user_id: user.id, name: 'post2', content: 'contente2') }
 
     it 'has many posts' do
+      #binding.pry
       expect(user.posts.count).to eq(2)
     end
   end
