@@ -1,0 +1,9 @@
+<%= form_for @post do |f| %>
+  <label for="">Title:</label><br>
+  <%= f.text-field :title %><br>
+  <label for="">Content:</label><br>
+  <%= f.text-area :content %><br>
+  <label for="">Tags:</label><br>
+  <%= f.check_box :tags %><br>
+  <%= f.submit %>
+<% end %>
