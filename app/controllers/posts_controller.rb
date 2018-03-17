@@ -25,15 +25,16 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @post }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+    if @post.valid?    
+      if tag_ids = params[:post][:tag_ids].reject { |t| t.empty? }
+        tag_ids.each do |tag_id|
+          @post.tags << Tag.find(tag_id)
+        end
       end
+      @post.save
+      redirect_to post_path(@post)
+    else
+      render :new
     end
   end
 
@@ -69,6 +70,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name)
+      params.require(:post).permit(:name, :content)
     end
 end

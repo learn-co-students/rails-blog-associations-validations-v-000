@@ -4,3 +4,11 @@
 require File.expand_path('../config/application', __FILE__)
 
 RailsBlog::Application.load_tasks
+
+
+task :console do
+require 'irb'
+require './config/environment'
+ARGV.clear
+IRB.start
+end
