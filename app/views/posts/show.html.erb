@@ -2,7 +2,15 @@
 
 <p>
   <h3>Name:</h3>
-  <%= @post.name %>
+  <%= @post.name %><br>
+
+  <h4>Content:</h4>
+  <%= @post.content%><br>
+
+  <h4>Tags:</h4><br>
+  <% @post.tags.each do |t| %>
+    <%= t.name %>
+  <% end %>
 </p>
 
 
