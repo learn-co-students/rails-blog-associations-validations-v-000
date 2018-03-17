@@ -22,6 +22,8 @@ describe 'tags for posts', :type => :feature do
   end
 
   it 'can create a post with adding multiple tags' do
+    puts cute.inspect
+    puts adorable.inspect
     visit '/posts/new'
     fill_in('Name', :with => 'Post title')
     fill_in('Content', :with => 'post content')
