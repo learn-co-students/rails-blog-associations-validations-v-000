@@ -6,14 +6,19 @@
       <ul>
       <% @post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
+        <% binding.pry %>
       <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name%><br>
     <%= f.text_field :name %><br>
+    <%= f.label :content %><br>
+    <%= f.text_field :content %><br>
+
+  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
   </div>
 
   <div class="actions">
