@@ -11,9 +11,9 @@ describe Tag do
   end
 
   context 'Tag relationship to Post' do
-    let(:tag) { Tag.create(name: 'cute') }
-    let(:user) { User.create(name: 'kitten') }
-    let(:post) { Post.create(user: user, name: 'post', content: 'content') }
+    let(:tag) { Tag.create(name: 'kute') }
+    let(:user) { User.create(name: 'kat') }
+    let(:post) { Post.create(user: user, name: 'post12', content: 'content12') }
 
     before do
       PostTag.create(tag: tag, post: post)
