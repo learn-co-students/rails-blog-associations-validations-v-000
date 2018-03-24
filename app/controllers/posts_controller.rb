@@ -25,7 +25,9 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+    tag_ids.each do |tag_id|
+      @post.tags << Tag.find(tag_id) unless tag_id.blank?
+    end
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -67,8 +69,12 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
+    def tag_ids
+      params.require(:post).permit(:tags => [])[:tags]
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name)
+      params.require(:post).permit(:name, :content)
     end
 end
