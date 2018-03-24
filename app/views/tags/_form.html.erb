@@ -4,8 +4,13 @@
       <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
 
       <ul>
+<<<<<<< HEAD
       <% @tag.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
+=======
+      <% @tag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+>>>>>>> 5ece51e4ab674d5d36872fa2a900b7f86e76357a
       <% end %>
       </ul>
     </div>
@@ -15,7 +20,10 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5ece51e4ab674d5d36872fa2a900b7f86e76357a
   <div class="actions">
     <%= f.submit %>
   </div>

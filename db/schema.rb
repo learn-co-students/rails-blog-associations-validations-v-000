@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180324134147) do
+=======
+ActiveRecord::Schema.define(version: 20180323112134) do
+>>>>>>> 5ece51e4ab674d5d36872fa2a900b7f86e76357a
 
   create_table "post_tags", force: :cascade do |t|
     t.integer  "post_id"
@@ -23,7 +27,10 @@ ActiveRecord::Schema.define(version: 20180324134147) do
   create_table "posts", force: :cascade do |t|
     t.string   "name"
     t.text     "content"
+<<<<<<< HEAD
     t.integer  "user_id"
+=======
+>>>>>>> 5ece51e4ab674d5d36872fa2a900b7f86e76357a
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
