@@ -5,6 +5,10 @@
   <%= @post.name %>
   <h3>Content:</h3>
   <%= @post.content %>
+  <h2>Tags:</h2>
+  <% @post.tag_ids.each do |tag| %>
+    <%= Tag.find(tag).name %>
+  <% end %>
 </p>
 
 
