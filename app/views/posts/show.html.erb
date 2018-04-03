@@ -5,6 +5,11 @@
   <%= @post.name %><br>
   <h3>Content:</h3>
   <%=@post.content%>
+  <h3>tags</h3>
+  <%@post.tags.each do|tag|%>
+    <%=tag.name%>
+  <%end%>
+
 </p>
 
 

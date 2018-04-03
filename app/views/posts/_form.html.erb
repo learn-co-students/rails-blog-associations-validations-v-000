@@ -12,14 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name ,id: :Name%><br>
-    <%= f.text_field :name, id: :Name %><br>
+    <%= f.label :name%><br>
+    <%= f.text_field :name %><br>
   </div>
   <div class="field">
-    <%=f.label :content, id: :Content%><br>
-    <%=f.text_field :content, id: :Content%><br>
-    
+    <%=f.label :content%><br>
+    <%=f.text_field :content%><br>
   </div>
+
+  <div class="field">
+    <%=collection_check_boxes(:post, :tag_ids, Tag.all, :id, :name_with_initial)%><br>
+  </div>
+
 
   <div class="actions">
     <%= f.submit %>
