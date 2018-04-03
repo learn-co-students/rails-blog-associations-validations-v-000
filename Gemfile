@@ -43,4 +43,5 @@ group :test, :development do
   gem "database_cleaner"
   gem "sqlite3"
   gem "pry"
+  gem 'rails-erd', require: false, group: :development
 end
