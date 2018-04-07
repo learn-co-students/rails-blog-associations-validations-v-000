@@ -1,0 +1,12 @@
+<%=form_for(@tag) do |t|%>
+<% if @tag.errors.any? %>
+<% @tag.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+<% end %>
+<%end%>
+<div class="field">
+   <%= f.label :name %><br>
+   <%= f.text_field :name %><br>
+</div>
+<%=t.submit%>
+<%end%>

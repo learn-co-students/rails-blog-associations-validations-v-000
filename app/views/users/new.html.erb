@@ -1,0 +1,12 @@
+<%=form_for(@user) do |t|%>
+<% if @user.errors.any? %>
+<% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+<% end %>
+<%end%>
+<div class="field">
+   <%= t.label :name %><br>
+   <%= t.text_field :name %><br>
+</div>
+<%=t.submit%>
+<%end%>
