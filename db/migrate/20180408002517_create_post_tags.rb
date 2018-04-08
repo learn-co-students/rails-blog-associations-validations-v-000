@@ -1,8 +1,8 @@
 class CreatePostTags < ActiveRecord::Migration
   def change
     create_table :post_tags do |t|
-      t.belongs_to :tag
-      t.belongs_to :post
+      t.integer :tag_id
+      t.integer :post_id
 
       t.timestamps null: false
     end
