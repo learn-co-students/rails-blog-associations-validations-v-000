@@ -1,5 +1,5 @@
 RailsBlog::Application.routes.draw do
-  resources :post
+  resources :posts
   resources :tags
   resources :users
 end
