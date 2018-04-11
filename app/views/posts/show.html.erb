@@ -5,6 +5,11 @@
   <%= @post.name %>
 </p>
 
+<p><%= @post.content %></p>
+
+<% if @post.tags.present? %>
+  <p> Tags: <%= @post.tags.pluck(:name).join(", ") %></p>
+<% end %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
