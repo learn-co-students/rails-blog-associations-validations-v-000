@@ -7,6 +7,7 @@ gem 'sass-rails'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'uglifier'
 gem 'bootsnap'
+gem 'coffee-script-source', '1.8.0'
 
 gem 'sqlite3', '~>1.3.6'
 

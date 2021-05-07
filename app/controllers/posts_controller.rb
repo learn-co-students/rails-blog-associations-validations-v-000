@@ -69,6 +69,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name)
+      params.require(:post).permit(:name, :content, :tag_ids =>[])
+      # To declare that the value in params must be an array of permitted scalar values map the key to an empty array:
     end
 end
